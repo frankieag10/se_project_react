@@ -1,0 +1,185 @@
+@font-face {
+  font-family: "Familjen Grotesk";
+  src: url("../../../public/fonts/Familjen_Grotesk/FamiljenGrotesk-Regular.ttf");
+}
+.nav {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  margin: 0;
+  padding: 18px 16px 0 16px;
+  /* visibility: hidden; */
+  display: none;
+}
+.nav__menu-button {
+  /* visibility: hidden; */
+  top: 18px;
+  right: 16px;
+  border-radius: 10px;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  background: no-repeat #fff url("../../images/menu.svg");
+  background-position: center;
+  height: 44px;
+  width: 44px;
+  border: none;
+}
+.nav__menu-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: no-repeat transparent url("../../images/menu-close.svg");
+  background-position: center;
+  height: 44px;
+  width: 44px;
+  border: none;
+  cursor: pointer;
+  transition: opacity 450ms ease;
+}
+.nav__menu-close:hover {
+  opacity: 0.6;
+}
+.nav__log {
+  height: 40px;
+  width: 89px;
+}
+.nav__user-info {
+  display: flex;
+  column-gap: 12px;
+  align-items: center;
+}
+.nav__menu {
+  position: fixed;
+  top: 18px;
+  right: 22px;
+  /* left: 16px; */
+  display: flex;
+  flex-direction: column;
+  row-gap: 24px;
+  justify-content: center;
+  align-items: center;
+  width: 330px;
+  height: 208px;
+  background: #fff;
+  padding: 0;
+  margin: 0;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  z-index: 3;
+  visibility: hidden;
+}
+.nav__user-title {
+  grid-area: "name";
+  font-family: "Familjen Grotesk";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 25px;
+  /* identical to box height */
+  width: 157px;
+  color: #000000;
+  margin: 0;
+  padding: 0;
+}
+.nav__avatar {
+  grid-area: "avatar";
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+}
+.nav__button {
+  grid-area: "button";
+  width: 100%;
+  cursor: pointer;
+  font-family: "Familjen Grotesk";
+  background: transparent;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  /* identical to box height, or 120% */
+  border: none;
+  color: #000000;
+  transition: opacity 450ms ease;
+}
+.nav__button:hover {
+  opacity: 0.6;
+}
+.header {
+  /* background-color: dodgerblue; */
+  display: flex;
+  justify-content: space-between;
+  max-width: 100%;
+  height: 73px;
+  padding: 0 40px;
+  position: relative;
+}
+
+/* header left side */
+.header__left-side {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header__logo {
+  height: 40px;
+}
+.header__date {
+  font-family: "Familjen Grotesk";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  margin: 0 0 0 24px;
+  padding: 0;
+}
+
+/* header right side */
+.header__right-side {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header__button {
+  height: 24px;
+  font-family: "Familjen Grotesk";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  background-color: transparent;
+  border: none;
+  /* outline: none; */
+  cursor: pointer;
+  margin: 0 20px 0 0;
+  padding: 0;
+  transition: opacity ease 450ms;
+}
+.header__button:hover {
+  opacity: 0.6;
+}
+.header__user-title {
+  font-family: "Familjen Grotesk";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 25px;
+  margin: 0 12px 0 0;
+  padding: 0;
+}
+.header__avatar {
+  height: 40px;
+}
+
+@media only screen and (max-width: 376px) {
+  .header {
+    visibility: hidden;
+  }
+  .nav {
+    height: 40px;
+  }
+  .nav__menu-button {
+    visibility: visible;
+  }
+}
