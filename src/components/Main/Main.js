@@ -35,8 +35,6 @@ function Main({ onSelectCard, temp, cardBackground, dayType }) {
         id="items-section"
       >
         <span className="weather__suggest">Today is {temp}°F / You may want to wear:</span>
-        {/* {/* <p>Weather condition: {cardBackground}</p> */}
-        {/* <p>Day or night: {`${dayType}`}</p> */}
 
         <div className="card-container">
           {filteredCards.map((item) => {
