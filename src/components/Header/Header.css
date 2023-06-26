@@ -110,11 +110,6 @@
   position: relative;
 }
 
-.header__left-side {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
 .header__logo {
   height: 40px;
 }
@@ -128,11 +123,6 @@
   padding: 0;
 }
 
-.header__right-side {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
 .header__button {
   height: 24px;
   font-family: "Familjen Grotesk";

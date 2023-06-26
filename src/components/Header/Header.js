@@ -35,30 +35,26 @@ function Header({ handleOpenModal, currenLocation }) {
       </nav>
 
       <div className="header">
-        <div className="header__left-side">
-          <img
-            src={logo}
-            alt="logo"
-            className="header__logo"
-          />
-          <p className="header__date">
-            {currentDate}, {currenLocation}
-          </p>
-        </div>
-        <div className="header__right-side">
-          <button
-            className="header__button"
-            onClick={handleOpenModal}
-          >
-            + Add clothes
-          </button>
-          <p className="header__user-title">Frank Aguirre</p>
-          <img
-            className="header__avatar"
-            src={avatarImage}
-            alt="avatar"
-          />
-        </div>
+        <img
+          src={logo}
+          alt="logo"
+          className="header__logo"
+        />
+        <p className="header__date">
+          {currentDate}, {currenLocation}
+        </p>
+        <button
+          className="header__button"
+          onClick={handleOpenModal}
+        >
+          + Add clothes
+        </button>
+        <p className="header__user-title">Frank Aguirre</p>
+        <img
+          className="header__avatar"
+          src={avatarImage}
+          alt="avatar"
+        />
       </div>
     </div>
   );
