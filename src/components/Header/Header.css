@@ -18,7 +18,7 @@
   border-radius: 10px;
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
   cursor: pointer;
-  background: no-repeat #fff url("../../images/menu.svg");
+  background: no-repeat #fff url("../../images/weather_conditions/menu.svg");
   background-position: center;
   height: 44px;
   width: 44px;
@@ -28,7 +28,7 @@
   position: absolute;
   top: 10px;
   right: 10px;
-  background: no-repeat transparent url("../../images/menu-close.svg");
+  background: no-repeat transparent url("../../images/weather_conditions/menu-close.svg");
   background-position: center;
   height: 44px;
   width: 44px;

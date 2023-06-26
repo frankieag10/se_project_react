@@ -1,0 +1,108 @@
+@font-face {
+  font-family: "Familjen Grotesk";
+  src: url("../../../public/fonts/Familjen_Grotesk/FamiljenGrotesk-Regular.ttf");
+}
+.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.3);
+}
+.modal__type_form .modal__content {
+  padding: 28px;
+  max-width: 100%;
+  width: 496px;
+  height: auto;
+}
+.modal__content {
+  position: relative;
+  padding: 28px;
+  background-color: #ffff;
+  margin: 0;
+  border-radius: 20px;
+  max-width: 100%;
+  width: 496px;
+}
+.modal__close {
+  position: absolute;
+  top: 22px;
+  right: 30px;
+  background: transparent url("../../images/close.svg");
+  height: 16px;
+  width: 16px;
+  border: none;
+  cursor: pointer;
+}
+.modal__title {
+  font-family: "Familjen Grotesk";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+}
+.modal__button {
+  font-family: "Familjen Grotesk";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  cursor: pointer;
+  padding: 0;
+  margin: 34px 0 0 0;
+  border: none;
+  width: 124px;
+  height: 36px;
+  /* background: rgba(0, 0, 0, 0.3); */
+  background: #000000;
+  border-radius: 4px;
+  color: #fff;
+  transition: background-color ease 450ms;
+}
+.modal__button:active {
+  transform: scale(0.98);
+  outline: none;
+  transition: 0.2s all;
+}
+.modal__button:hover {
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.6);
+}
+.form__fieldset {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.form__label {
+  font-family: "Familjen Grotesk";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  margin: 0 0 8px 0;
+  padding: 0;
+}
+.form__fieldset:nth-child(1) .form__input {
+  font-family: "Familjen Grotesk";
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #000;
+  margin: 0 0 24px 0;
+  padding: 0 0 4px 0;
+}
+.form__input::placeholder {
+  font-family: "Familjen Grotesk";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  color: rgba(0, 0, 0, 0.5);
+}

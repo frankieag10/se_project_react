@@ -2,6 +2,7 @@ import React from "react";
 import "./Header.css";
 import logo from "../../images/Logo.svg";
 import avatarImage from "../../images/avatar.svg";
+
 function Header({ handleOpenModal, currenLocation }) {
   const currentDate = new Date().toLocaleString("default", { month: "long", day: "numeric" });
 
@@ -51,7 +52,7 @@ function Header({ handleOpenModal, currenLocation }) {
           >
             + Add clothes
           </button>
-          <p className="header__user-title">Terrence Tegegne</p>
+          <p className="header__user-title">Frank Aguirre</p>
           <img
             className="header__avatar"
             src={avatarImage}

@@ -1,27 +1,152 @@
-import "../App/App.js";
-import "..";
+import React from "react";
+import Footer from "../Footer/Footer";
+import Header from "../Header/Header";
+import Main from "../Main/Main";
+import ModalWithForm from "../ModalWithForm/ModalWithForm";
+import ItemModal from "../ItemModal/ItemModal";
+import "./App.css";
+import { getWeatherForecast, weatherData, weatherName } from "../../utils/WeatherApi";
 
 function App() {
+  const [activeModal, setActiveModal] = React.useState("");
+  const [selectedCard, setSelectedCard] = React.useState({});
+  const [temp, setTemp] = React.useState(0);
+  const [cardBackground, setCardBackground] = React.useState("Clear");
+  const [location, setLocation] = React.useState("");
+  const [dayType, setDayType] = React.useState(true);
+  // const [isMobileMenuOpened, setIsMobileMenuOpened] = React.useState(false);
+
+  React.useEffect(() => {
+    getWeatherForecast()
+      .then((data) => {
+        console.log(data);
+        const weatherCondition = weatherName(data);
+        setCardBackground(weatherCondition);
+        const currentLocation = data.name;
+        setLocation(currentLocation);
+        const temperature = weatherData(data);
+        setTemp(temperature);
+        const sunset = new Date(data.sys.sunset * 1000);
+        const sunrise = new Date(data.sys.sunrise * 1000);
+        if (Date.now() >= sunrise) {
+          setDayType(true);
+        } else if (Date.now() <= sunset) {
+          setDayType(false);
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, []);
+
+  const handleOpenModal = () => {
+    setActiveModal("open");
+  };
+  const handleCloseModal = () => {
+    setActiveModal("");
+  };
+  const handleSelectedCard = (card) => {
+    setActiveModal("preview");
+    setSelectedCard(card);
+  };
+
+  // const toggleMobileMenu = () => {
+
+  // }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img
-          src={logo}
-          className="App-logo"
-          alt="logo"
-        />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <div className="app">
+      <Header
+        handleOpenModal={handleOpenModal}
+        currenLocation={location}
+      />
+      <Main
+        onSelectCard={handleSelectedCard}
+        temp={temp}
+        cardBackground={cardBackground}
+        dayType={dayType}
+      />
+      <Footer />
+      {activeModal === "open" && (
+        <ModalWithForm
+          title="New garment"
+          onClose={handleCloseModal}
+          name="form"
+          buttonText="Add garment"
         >
-          Learn React
-        </a>
-      </header>
+          <fieldset className="form__fieldset">
+            <label
+              htmlFor="name"
+              className="form__label"
+            >
+              Name
+            </label>
+            <input
+              type="text"
+              id="name"
+              className="form__input"
+              placeholder="Name"
+            />
+            <label
+              htmlFor="url"
+              className="form__label"
+            >
+              Image
+            </label>
+            <input
+              id="url"
+              type="url"
+              className="form__input"
+              placeholder="Image URL"
+            />
+          </fieldset>
+          <fieldset className="form__fieldset">
+            <span className="form__label">Select the weather type:</span>
+            <label
+              htmlFor="wather-hot"
+              className="form__label"
+            >
+              <input
+                type="radio"
+                name="weatherType"
+                id="wather-hot"
+                className="form__input"
+              />{" "}
+              Hot
+            </label>
+            <label
+              htmlFor="wather-warm"
+              className="form__label"
+            >
+              <input
+                type="radio"
+                name="weatherType"
+                id="wather-warm"
+                className="form__input"
+              />{" "}
+              Warm
+            </label>
+            <label
+              htmlFor="wather-cold"
+              className="form__label"
+            >
+              <input
+                type="radio"
+                name="weatherType"
+                id="wather-cold"
+                className="form__input"
+              />{" "}
+              Cold
+            </label>
+          </fieldset>
+        </ModalWithForm>
+      )}
+      {activeModal === "preview" && (
+        <ItemModal
+          onClose={handleCloseModal}
+          selectedCard={selectedCard}
+        ></ItemModal>
+      )}
     </div>
   );
 }
