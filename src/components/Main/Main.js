@@ -5,11 +5,11 @@ import WeatherBackground from "../WeatherCard/WeatherCard";
 import ItemCard from "../ItemCard/ItemCard";
 function Main({ onSelectCard, temp, cardBackground, dayType }) {
   const getWeatherType = () => {
-    if (temp >= 86) {
+    if (temp >= 84) {
       return "hot";
-    } else if (temp >= 66 && temp <= 85) {
+    } else if (temp >= 66 && temp <= 83) {
       return "warm";
-    } else if (temp <= 65) {
+    } else if (temp <= 66) {
       return "cold";
     }
   };

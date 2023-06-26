@@ -2,7 +2,6 @@ import { weatherOptions } from "../../utils/constants";
 import "./WeatherCard.css";
 
 function WeatherBackground({ day, type }) {
-  // weatherOptions.find((item) => console.log(item.day === day && item.type === type));
   const weatherOption = weatherOptions.find((item) => {
     console.log(item.day === day && item.type === type);
     return item.day === day && item.type === type;

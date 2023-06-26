@@ -14,7 +14,6 @@ function App() {
   const [cardBackground, setCardBackground] = React.useState("Clear");
   const [location, setLocation] = React.useState("");
   const [dayType, setDayType] = React.useState(true);
-  // const [isMobileMenuOpened, setIsMobileMenuOpened] = React.useState(false);
 
   React.useEffect(() => {
     getWeatherForecast()
@@ -49,10 +48,6 @@ function App() {
     setActiveModal("preview");
     setSelectedCard(card);
   };
-
-  // const toggleMobileMenu = () => {
-
-  // }
 
   return (
     <div className="app">

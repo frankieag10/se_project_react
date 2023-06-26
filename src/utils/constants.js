@@ -1,20 +1,21 @@
-// day backgrounds
+// day weather backgrounds
 import dayCloud from "../images/weather_conditions/day-cloudy.svg";
 import dayRain from "../images/weather_conditions/day-rain.svg";
 import dayFog from "../images/weather_conditions/day-fog.svg";
 import daySnow from "../images/weather_conditions/day-snow.svg";
-import dayStrom from "../images/weather_conditions/day-storm.svg";
+import dayStorm from "../images/weather_conditions/day-storm.svg";
 import dayClear from "../images/weather_conditions/day-sunny.svg";
-//import dayMist from "../images/weather_conditions/day-mist.svg";
+import dayMist from "../images/weather_conditions/day-mist.svg";
 
-// night backgrounds
+// night weather backgrounds
 import nightCloud from "../images/weather_conditions/night-cloudy.svg";
 import nightRain from "../images/weather_conditions/night-rain.svg";
 import nightFog from "../images/weather_conditions/night-fog.svg";
 import nightSnow from "../images/weather_conditions/night-snow.svg";
-import nightStrom from "../images/weather_conditions/night-storm.svg";
+import nightStorm from "../images/weather_conditions/night-storm.svg";
 import nightClear from "../images/weather_conditions/night-moon.svg";
-//import nightMist from "../images/weather_conditions/night-mist.svg";
+import nightMist from "../images/weather_conditions/night-mist.svg";
+//import { type } from "@testing-library/user-event/dist/type";
 
 const defaultClothingItems = [
   {
@@ -55,7 +56,6 @@ const defaultClothingItems = [
   },
 ];
 
-// weather conditions array
 const weatherOptions = [
   {
     url: dayCloud,
@@ -78,7 +78,7 @@ const weatherOptions = [
     day: true,
   },
   {
-    url: dayStrom,
+    url: dayStorm,
     type: "Thunderstorm",
     day: true,
   },
@@ -92,6 +92,13 @@ const weatherOptions = [
     type: "Mist",
     day: true,
   },
+
+  {
+    url: dayMist,
+    type: "Mist",
+    day: true,
+  },
+
   {
     url: nightCloud,
     type: "Clouds",
@@ -118,12 +125,17 @@ const weatherOptions = [
     day: false,
   },
   {
-    url: nightStrom,
+    url: nightStorm,
     type: "Thunderstorm",
     day: false,
   },
   {
     url: nightFog,
+    type: "Mist",
+    day: false,
+  },
+  {
+    url: nightMist,
     type: "Mist",
     day: false,
   },
