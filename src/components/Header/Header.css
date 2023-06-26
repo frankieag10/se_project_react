@@ -8,11 +8,9 @@
   position: relative;
   margin: 0;
   padding: 18px 16px 0 16px;
-  /* visibility: hidden; */
   display: none;
 }
 .nav__menu-button {
-  /* visibility: hidden; */
   top: 18px;
   right: 16px;
   border-radius: 10px;
@@ -52,7 +50,6 @@
   position: fixed;
   top: 18px;
   right: 22px;
-  /* left: 16px; */
   display: flex;
   flex-direction: column;
   row-gap: 24px;
@@ -75,7 +72,6 @@
   font-weight: 700;
   font-size: 20px;
   line-height: 25px;
-  /* identical to box height */
   width: 157px;
   color: #000000;
   margin: 0;
@@ -98,7 +94,6 @@
   font-weight: 700;
   font-size: 20px;
   line-height: 24px;
-  /* identical to box height, or 120% */
   border: none;
   color: #000000;
   transition: opacity 450ms ease;
@@ -107,7 +102,6 @@
   opacity: 0.6;
 }
 .header {
-  /* background-color: dodgerblue; */
   display: flex;
   justify-content: space-between;
   max-width: 100%;
@@ -116,7 +110,6 @@
   position: relative;
 }
 
-/* header left side */
 .header__left-side {
   display: flex;
   justify-content: space-between;
@@ -135,7 +128,6 @@
   padding: 0;
 }
 
-/* header right side */
 .header__right-side {
   display: flex;
   justify-content: space-between;
@@ -150,7 +142,6 @@
   line-height: 24px;
   background-color: transparent;
   border: none;
-  /* outline: none; */
   cursor: pointer;
   margin: 0 20px 0 0;
   padding: 0;
@@ -170,16 +161,4 @@
 }
 .header__avatar {
   height: 40px;
-}
-
-@media only screen and (max-width: 376px) {
-  .header {
-    visibility: hidden;
-  }
-  .nav {
-    height: 40px;
-  }
-  .nav__menu-button {
-    visibility: visible;
-  }
 }
