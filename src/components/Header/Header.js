@@ -3,7 +3,7 @@ import "./Header.css";
 import logo from "../../images/Logo.svg";
 import avatarImage from "../../images/avatar.svg";
 
-function Header({ handleOpenModal, currenLocation }) {
+function Header({ handleOpenModal, currentLocation }) {
   const currentDate = new Date().toLocaleString("default", { month: "long", day: "numeric" });
 
   return (
@@ -35,26 +35,30 @@ function Header({ handleOpenModal, currenLocation }) {
       </nav>
 
       <div className="header">
-        <img
-          src={logo}
-          alt="logo"
-          className="header__logo"
-        />
-        <p className="header__date">
-          {currentDate}, {currenLocation}
-        </p>
-        <button
-          className="header__button"
-          onClick={handleOpenModal}
-        >
-          + Add clothes
-        </button>
-        <p className="header__user-title">Frank Aguirre</p>
-        <img
-          className="header__avatar"
-          src={avatarImage}
-          alt="avatar"
-        />
+        <div className="header__left-side">
+          <img
+            src={logo}
+            alt="logo"
+            className="header__logo"
+          />
+          <p className="header__date">
+            {currentDate}, {currentLocation}
+          </p>
+        </div>
+        <div className="header__right-side">
+          <button
+            className="header__button"
+            onClick={handleOpenModal}
+          >
+            + Add clothes
+          </button>
+          <p className="header__user-title">Terrence Tegegne</p>
+          <img
+            className="header__avatar"
+            src={avatarImage}
+            alt="avatar"
+          />
+        </div>
       </div>
     </div>
   );

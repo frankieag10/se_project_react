@@ -2,10 +2,9 @@ import { weatherOptions } from "../../utils/constants";
 import "./WeatherCard.css";
 
 function WeatherBackground({ day, type }) {
-  const weatherOption = weatherOptions.find((item) => {
-    console.log(item.day === day && item.type === type);
-    return item.day === day && item.type === type;
-  });
+  const weatherOption = weatherOptions.find((item) => item.day === day && item.type === type);
+  console.log(weatherOption);
+
   const imageSourceUrl = weatherOption?.url || "";
   console.log(weatherOption?.url);
   return (

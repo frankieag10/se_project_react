@@ -19,19 +19,24 @@ function App() {
     getWeatherForecast()
       .then((data) => {
         console.log(data);
+        const {
+          name,
+          sys: { sunset, sunrise },
+        } = data;
+
         const weatherCondition = weatherName(data);
         setCardBackground(weatherCondition);
-        const currentLocation = data.name;
-        setLocation(currentLocation);
+
+        setLocation(name);
+
         const temperature = weatherData(data);
         setTemp(temperature);
-        const sunset = new Date(data.sys.sunset * 1000);
-        const sunrise = new Date(data.sys.sunrise * 1000);
-        if (Date.now() >= sunrise) {
-          setDayType(true);
-        } else if (Date.now() <= sunset) {
-          setDayType(false);
-        }
+
+        const now = Date.now();
+        const sunriseTime = new Date(sunrise * 1000);
+        const sunsetTime = new Date(sunset * 1000);
+
+        setDayType(now >= sunriseTime && now <= sunsetTime);
       })
       .catch((err) => {
         console.error(err);
@@ -53,7 +58,7 @@ function App() {
     <div className="app">
       <Header
         handleOpenModal={handleOpenModal}
-        currenLocation={location}
+        currentLocation={location}
       />
       <Main
         onSelectCard={handleSelectedCard}

@@ -16,12 +16,17 @@ const processServerResponse = (res) => {
 };
 
 const weatherData = (data) => {
-  const main = data.main;
-  const temperature = main && main.temp;
-  return Math.ceil(temperature);
+  const {
+    main: { temp },
+  } = data;
+  return Math.ceil(temp);
 };
+
 const weatherName = (data) => {
-  const name = data.weather[0].main;
-  return name;
+  const {
+    weather: [{ main }],
+  } = data;
+  return main;
 };
+
 export { weatherData, weatherName };
