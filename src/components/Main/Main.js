@@ -19,7 +19,7 @@ function Main({ onSelectCard, temp, cardBackground, dayType }) {
     return card.weather.toLowerCase() === weatherType;
   });
   return (
-    <div className="Main">
+    <main className="Main">
       <section
         className="weather"
         id="weather-section"
@@ -48,7 +48,7 @@ function Main({ onSelectCard, temp, cardBackground, dayType }) {
           })}
         </div>
       </section>
-    </div>
+    </main>
   );
 }
 

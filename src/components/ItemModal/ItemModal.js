@@ -12,7 +12,7 @@ function ItemModal({ onClose, selectedCard }) {
           <img
             src={selectedCard.link}
             className="modal__image"
-            alt="aimeg of modal"
+            alt={selectedCard.name}
           />
         </div>
         <div className="modal__footer">
