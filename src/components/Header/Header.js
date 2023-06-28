@@ -1,7 +1,7 @@
 import React from "react";
 import "./Header.css";
 import logo from "../../images/Logo.svg";
-import avatarImage from "../../images/avatar.svg";
+import avatarImage from "../../images/Ellipse_18.png";
 
 function Header({ handleOpenModal, currentLocation }) {
   const currentDate = new Date().toLocaleString("default", { month: "long", day: "numeric" });
@@ -35,7 +35,7 @@ function Header({ handleOpenModal, currentLocation }) {
       </nav>
 
       <div className="header">
-        <div className="header__left-side">
+        <div className="header__left">
           <img
             src={logo}
             alt="logo"
@@ -45,7 +45,7 @@ function Header({ handleOpenModal, currentLocation }) {
             {currentDate}, {currentLocation}
           </p>
         </div>
-        <div className="header__right-side">
+        <div className="header__right">
           <button
             className="header__button"
             onClick={handleOpenModal}

@@ -9,7 +9,7 @@ function WeatherBackground({ day, type }) {
   console.log(weatherOption?.url);
   return (
     <img
-      className="weather__bg"
+      className="weather__background"
       src={imageSourceUrl}
       alt="weather background"
     />

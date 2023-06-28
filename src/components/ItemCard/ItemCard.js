@@ -6,7 +6,7 @@ function ItemCard({ onSelectCard, item }) {
       <img
         src={item.link}
         className="card__image"
-        alt="image item"
+        alt={item.name}
         onClick={() => onSelectCard(item)}
       />
     </div>
