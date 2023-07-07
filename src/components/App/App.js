@@ -17,7 +17,6 @@ import api from "../../utils/Api";
 
 function App() {
   const [activeModal, setActiveModal] = React.useState("");
-  // const [isMobileMenuOpened, setIsMobileMenuOpened] = React.useState(false);
   const [selectedCard, setSelectedCard] = React.useState({});
   const [temp, setTemp] = React.useState(0);
   const [cardBackground, setCardBackground] = React.useState("Clear");
@@ -26,44 +25,6 @@ function App() {
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = React.useState("F");
   const [clothingItems, setClothingItems] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(false);
-
-  /*React.useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await getWeatherForecast();
-        const weatherCondition = weatherName(data);
-        setCardBackground(weatherCondition);
-        setLocation(data.name);
-        setTemp(weatherData(data));
-
-        const sunset = new Date(data.sys.sunset * 1000);
-        const sunrise = new Date(data.sys.sunrise * 1000);
-        setDayType(Date.now() >= sunrise ? true : Date.now() <= sunset ? false : null);
-
-        getItemList();
-      } catch (err) {
-        console.error(err);
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  function getItemList() {
-    function makeRequest() {
-      return api
-        .getItemList()
-        .then((data) => {
-          setClothingItems(data);
-        })
-        .catch((err) => {
-          console.error(err);
-        });
-    }
-
-    handleSubmit(makeRequest);
-  }
-  */
 
   React.useEffect(() => {
     const fetchData = async () => {
@@ -146,10 +107,6 @@ function App() {
     setActiveModal("confirm");
   };
   useEscape(handleCloseModal);
-
-  // const toggleMobileMenu = () => {
-
-  // }
 
   return (
     <div className="app">
