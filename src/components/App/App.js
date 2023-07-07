@@ -1,94 +1,94 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import ItemModal from "../ItemModal/ItemModal";
-import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
 import "./App.css";
-import { getWeatherForecast, weatherData, weatherName } from "../../utils/WeatherApi";
+import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
 import { Switch, Route } from "react-router-dom";
 import Profile from "../Profile/Profile";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import api from "../../utils/Api";
+import { getWeatherForecast, weatherData, weatherName } from "../../utils/WeatherApi";
 import DeleteConfirmationModal from "../DeleteConfirmationModal/DeleteConfirmationModal";
 import { useEscape } from "../hooks/useEscape";
 
 function App() {
-  const [activeModal, setActiveModal] = useState("");
-  const [selectedCard, setSelectedCard] = useState({});
-  const [temp, setTemp] = useState(0);
-  const [cardBackground, setCardBackground] = useState("Clear");
-  const [location, setLocation] = useState("");
-  const [dayType, setDayType] = useState(true);
-  const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
-  const [clothingItems, setClothingItems] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [activeModal, setActiveModal] = React.useState("");
+  const [selectedCard, setSelectedCard] = React.useState({});
+  const [temp, setTemp] = React.useState(0);
+  const [cardBackground, setCardBackground] = React.useState("Clear");
+  const [location, setLocation] = React.useState("");
+  const [dayType, setDayType] = React.useState(true);
+  const [currentTemperatureUnit, setCurrentTemperatureUnit] = React.useState("F");
+  const [clothingItems, setClothingItems] = React.useState([]);
+  const [isLoading, setIsLoading] = React.useState(false);
 
-  useEffect(() => {
-    getWeatherData();
-    getItemList();
-  }, []);
-
-  useEffect(() => {
-    const sunset = new Date(selectedCard.sys?.sunset * 1000);
-    const sunrise = new Date(selectedCard.sys?.sunrise * 1000);
-    if (Date.now() >= sunrise) {
-      setDayType(true);
-    } else if (Date.now() <= sunset) {
-      setDayType(false);
+  React.useEffect(() => {
+    function getItemList() {
+      api
+        .getItemList()
+        .then((data) => {
+          setClothingItems(data);
+        })
+        .catch((err) => {
+          console.error(err);
+        });
     }
-  }, [selectedCard]);
 
-  function getWeatherData() {
+    function handleWeatherData(data) {
+      const weatherCondition = weatherName(data);
+      setCardBackground(weatherCondition);
+      const currentLocation = data.name;
+      setLocation(currentLocation);
+      const temperature = weatherData(data);
+      setTemp(temperature);
+      const sunset = new Date(data.sys.sunset * 1000);
+      const sunrise = new Date(data.sys.sunrise * 1000);
+      if (Date.now() >= sunrise) {
+        setDayType(true);
+      } else if (Date.now() <= sunset) {
+        setDayType(false);
+      }
+    }
+
     getWeatherForecast()
       .then((data) => {
-        const weatherCondition = weatherName(data);
-        setCardBackground(weatherCondition);
-        const currentLocation = data.name;
-        setLocation(currentLocation);
-        const temperature = weatherData(data);
-        setTemp(temperature);
+        handleWeatherData(data);
+        getItemList();
       })
       .catch((err) => {
         console.error(err);
       });
-  }
-
-  function getItemList() {
-    setIsLoading(true);
-    api
-      .getItemList()
-      .then((data) => {
-        setClothingItems(data);
-      })
-      .catch((err) => {
-        console.error(err);
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
-  }
+  }, []);
 
   function handleSubmit(request) {
     setIsLoading(true);
     request()
-      .then(() => {
-        handleCloseModal();
-      })
-      .catch((error) => {
-        console.error(error);
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
+      .then(handleCloseModal)
+      .catch(console.error)
+      .finally(() => setIsLoading(false));
   }
 
   function handleOnAddItem(item) {
-    handleSubmit(() => api.addItem(item));
+    function makeRequest() {
+      return api.addItem(item).then((newItem) => {
+        console.log(newItem);
+        setClothingItems((prevItems) => [newItem, ...prevItems]);
+        handleCloseModal();
+      });
+    }
+    handleSubmit(makeRequest);
   }
 
   function handleCardDelete(card) {
-    handleSubmit(() => api.deleteItem(card));
+    function makeRequest() {
+      return api.deleteItem(card).then(() => {
+        setClothingItems((prevItems) => prevItems.filter((c) => c.id !== card.id));
+        handleCloseModal();
+      });
+    }
+    handleSubmit(makeRequest);
   }
 
   const handleToggleSwitchChange = () => {
@@ -109,6 +109,7 @@ function App() {
   };
 
   const openConfirmationModal = () => {
+    console.log("confirm delete modal opened!");
     setActiveModal("confirm");
   };
 
@@ -121,7 +122,7 @@ function App() {
       >
         <Header
           handleOpenModal={handleOpenModal}
-          currenLocation={location}
+          currentLocation={location}
         />
         <Switch>
           <Route
