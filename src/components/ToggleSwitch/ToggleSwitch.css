@@ -48,32 +48,7 @@
   /* transform: translateX(102%); */
   transition: 0.2s;
 }
-/* .switch__slider_F {
-    position: absolute;
-    width: 28px;
-    height: 28px;
-    top: 0;
-    right: 0;
-    border-radius: 20px;
-    background-color: #000;
-    transition: all ease 450ms;
-    z-index: -1;
-  }
-  .switch__slider_C {
-    position: absolute;
-    width: 28px;
-    height: 28px;
-    top: 0;
-    left: 0;
-    border-radius: 20px;
-    background-color: #000;
-    transition: all ease 450ms;
-    z-index: -1;
-  } */
-/* .switch__slider_F:active,
-  .switch__slider_C:active {
-    width: 34px;
-  } */
+
 .switch__temp-unit_f {
   font-size: 14px;
   font-family: "Familjen Grotesk";
@@ -93,7 +68,6 @@
 .switch__temp-unit_f::selection,
 .switch__temp-unit_c::selection {
   background-color: transparent;
-  /* color: none; */
 }
 .switch__active {
   color: #fff !important;
