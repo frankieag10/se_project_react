@@ -18,7 +18,7 @@ function WeatherCard({ day, type, temperature }) {
         {temperatureValue} {temperatureUnit}
       </span>
       <img
-        className="weather__bg"
+        className="weather__background"
         src={imageSourceUrl}
         alt="weather background"
       />
