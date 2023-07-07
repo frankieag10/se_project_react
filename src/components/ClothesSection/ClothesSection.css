@@ -1,0 +1,50 @@
+@font-face {
+  font-family: "Familjen Grotesk";
+  src: url("../../../public/fonts/Familjen_Grotesk/FamiljenGrotesk-Regular.ttf");
+}
+.clothes-section {
+  padding: 0 40px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.clothes-section__header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: 16px;
+}
+.clothes-section__button {
+  /* width: 88px; */
+  height: 25px;
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 20px;
+  font-family: "Familjen Grotesk";
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+.clothes-section__button:hover {
+  color: #000;
+}
+.clothes-section__title {
+  font-family: "Familjen Grotesk";
+  color: #000;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  /* margin: 15px 0 0 0; */
+  padding: 0;
+}
+.card-container {
+  margin: 0;
+}
+.card {
+  width: 290px;
+}

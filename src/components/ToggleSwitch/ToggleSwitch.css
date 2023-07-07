@@ -1,0 +1,104 @@
+@font-face {
+  font-family: "Familjen Grotesk";
+  src: url("../../../public/fonts/Familjen_Grotesk/FamiljenGrotesk-Regular.ttf");
+}
+.switch {
+  width: 45px;
+  height: 28px;
+  border: 2px solid #7e7e7e;
+  border-radius: 20px;
+  position: relative;
+  transition: border-color ease-in 250ms;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 8px;
+}
+.switch:hover {
+  border-color: #000;
+}
+.switch:hover .switch__temp-unit_f {
+  color: #000;
+}
+.switch:hover .switch__temp-unit_c {
+  color: #000;
+}
+.switch__box {
+  position: absolute;
+  appearance: none;
+}
+
+.switch__slider {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  background-color: #000;
+  border-radius: 50%;
+  left: -1px;
+  /* z-index: -1; */
+  transition: 0.3s;
+}
+.switch:active .switch__slider {
+  transform: scale(77%);
+}
+.switch__box:checked + .switch__slider {
+  left: calc(36px - 2px);
+  /* right: 1px; */
+  /* transform: translateX(102%); */
+  transition: 0.2s;
+}
+/* .switch__slider_F {
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    top: 0;
+    right: 0;
+    border-radius: 20px;
+    background-color: #000;
+    transition: all ease 450ms;
+    z-index: -1;
+  }
+  .switch__slider_C {
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    top: 0;
+    left: 0;
+    border-radius: 20px;
+    background-color: #000;
+    transition: all ease 450ms;
+    z-index: -1;
+  } */
+/* .switch__slider_F:active,
+  .switch__slider_C:active {
+    width: 34px;
+  } */
+.switch__temp-unit_f {
+  font-size: 14px;
+  font-family: "Familjen Grotesk";
+  font-style: normal;
+  font-weight: 700;
+  z-index: 1;
+  color: #7e7e7e;
+}
+.switch__temp-unit_c {
+  z-index: 1;
+  font-size: 14px;
+  font-family: "Familjen Grotesk";
+  font-style: normal;
+  font-weight: 700;
+  color: #7e7e7e;
+}
+.switch__temp-unit_f::selection,
+.switch__temp-unit_c::selection {
+  background-color: transparent;
+  /* color: none; */
+}
+.switch__active {
+  color: #fff !important;
+  font-size: 14px;
+  font-family: "Familjen Grotesk";
+  font-style: normal;
+  font-weight: 700;
+}

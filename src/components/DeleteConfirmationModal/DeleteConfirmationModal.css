@@ -1,0 +1,65 @@
+@font-face {
+  font-family: "Familjen Grotesk";
+  src: url("../../../public/fonts/Familjen_Grotesk/FamiljenGrotesk-Regular.ttf");
+}
+.modal__type_confirm > .modal__content {
+  background-color: #fff;
+  width: 670px;
+  height: 280px;
+}
+.modal__type_confirm .modal__content-body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 60px 150px;
+}
+.modal__text {
+  text-align: center;
+  margin: 0 0 16px 0;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  color: #000;
+  text-align: center;
+  /* UI text style 1 */
+  font-size: 20px;
+  font-family: "Familjen Grotesk";
+  font-style: normal;
+  font-weight: 700;
+}
+.modal__yes-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: #ff4d00;
+  text-align: center;
+  /* UI text style 1 */
+  font-size: 20px;
+  font-family: "Familjen Grotesk";
+  font-style: normal;
+  font-weight: 700;
+  line-height: 24px;
+  transition: 0.4s color ease;
+}
+.modal__yes-button:hover {
+  color: #ff0000;
+  text-decoration: underline;
+}
+.modal__cancel-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: #000;
+  text-align: center;
+  /* UI text style 1 */
+  font-size: 20px;
+  font-family: "Familjen Grotesk";
+  font-style: normal;
+  font-weight: 700;
+  line-height: 24px;
+  transition: color ease 0.4s;
+}
+.modal__cancel-button:hover {
+  color: rgba(0, 0, 0, 0.5);
+}
