@@ -6,14 +6,15 @@ import Main from "../Main/Main";
 import ItemModal from "../ItemModal/ItemModal";
 import "./App.css";
 import { getWeatherForecast, weatherData, weatherName } from "../../utils/WeatherApi";
-import { Switch } from "react-router-dom/cjs/react-router-dom.min";
-import { Route } from "react-router-dom/cjs/react-router-dom";
+//import { Switch } from "react-router-dom/cjs/react-router-dom.min";
+//import { Route } from "react-router-dom/cjs/react-router-dom";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
 import DeleteConfirmationModal from "../DeleteConfirmationModal/DeleteConfirmationModal";
 import Profile from "../Profile/Profile";
 import { useEscape } from "../hooks/useEscape";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import api from "../../utils/Api";
+import { Switch, Route } from "react-router-dom";
 
 function App() {
   const [activeModal, setActiveModal] = React.useState("");
