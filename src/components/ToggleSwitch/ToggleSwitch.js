@@ -13,7 +13,7 @@ function ToggleSwitch() {
         className="switch__box"
         onChange={handleToggleSwitchChange}
       />
-      {/* <span className={currentTemperatureUnit === 'F' ? 'switch__slider_F' : 'switch__slider_C'}></span> */}
+
       <span className="switch__slider"></span>
       <span className={`switch__temp-unit_c ${currentTemperatureUnit === "F" && "switch__active"}`}>
         F
