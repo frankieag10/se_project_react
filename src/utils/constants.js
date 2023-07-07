@@ -15,7 +15,6 @@ import nightSnow from "../images/weather_conditions/night-snow.svg";
 import nightStorm from "../images/weather_conditions/night-storm.svg";
 import nightClear from "../images/weather_conditions/night-moon.svg";
 import nightMist from "../images/weather_conditions/night-mist.svg";
-//import { type } from "@testing-library/user-event/dist/type";
 
 const defaultClothingItems = [
   {
