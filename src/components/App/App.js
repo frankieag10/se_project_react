@@ -4,11 +4,14 @@ import Header from "../Header/Header";
 import Main from "../Main/Main";
 import ItemModal from "../ItemModal/ItemModal";
 import "./App.css";
+
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+
 import Profile from "../Profile/Profile";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import api from "../../utils/Api";
+
 import { getWeatherForecast, weatherData, weatherName } from "../../utils/WeatherApi";
 import DeleteConfirmationModal from "../DeleteConfirmationModal/DeleteConfirmationModal";
 import { useEscape } from "../hooks/useEscape";
