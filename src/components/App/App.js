@@ -5,7 +5,7 @@ import Main from "../Main/Main";
 import ItemModal from "../ItemModal/ItemModal";
 import "./App.css";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
-import { Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Profile from "../Profile/Profile";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import api from "../../utils/Api";
@@ -116,60 +116,62 @@ function App() {
   useEscape(handleCloseModal);
 
   return (
-    <div className="app">
-      <CurrentTemperatureUnitContext.Provider
-        value={{ currentTemperatureUnit, handleToggleSwitchChange }}
-      >
-        <Header
-          handleOpenModal={handleOpenModal}
-          currentLocation={location}
-        />
-        <Switch>
-          <Route
-            exact
-            path="/"
-          >
-            <Main
-              onSelectCard={handleSelectedCard}
-              cards={clothingItems}
-              weatherTemp={temp}
-              cardBackground={cardBackground}
-              dayType={dayType}
-            />
-          </Route>
-          <Route path="/profile">
-            <Profile
-              cards={clothingItems}
-              onSelectCard={handleSelectedCard}
-              handleOpenModal={handleOpenModal}
-            />
-          </Route>
-        </Switch>
-      </CurrentTemperatureUnitContext.Provider>
-      <Footer />
-      {activeModal === "open" && (
-        <AddItemModal
-          handleCloseModal={handleCloseModal}
-          isOpen={activeModal === "open"}
-          onAddItem={handleOnAddItem}
-          buttonText={isLoading ? "Saving..." : "Add garment"}
-        />
-      )}
-      {activeModal === "preview" && (
-        <ItemModal
-          onClose={handleCloseModal}
-          selectedCard={selectedCard}
-          onDeleteItem={openConfirmationModal}
-        />
-      )}
-      {activeModal === "confirm" && (
-        <DeleteConfirmationModal
-          onClose={handleCloseModal}
-          onDeleteConfirm={() => handleCardDelete(selectedCard)}
-          buttonText={isLoading ? "Deleting..." : "Yes, delete item"}
-        />
-      )}
-    </div>
+    <BrowserRouter>
+      <div className="app">
+        <CurrentTemperatureUnitContext.Provider
+          value={{ currentTemperatureUnit, handleToggleSwitchChange }}
+        >
+          <Header
+            handleOpenModal={handleOpenModal}
+            currentLocation={location}
+          />
+          <Switch>
+            <Route
+              exact
+              path="/"
+            >
+              <Main
+                onSelectCard={handleSelectedCard}
+                cards={clothingItems}
+                weatherTemp={temp}
+                cardBackground={cardBackground}
+                dayType={dayType}
+              />
+            </Route>
+            <Route path="/profile">
+              <Profile
+                cards={clothingItems}
+                onSelectCard={handleSelectedCard}
+                handleOpenModal={handleOpenModal}
+              />
+            </Route>
+          </Switch>
+        </CurrentTemperatureUnitContext.Provider>
+        <Footer />
+        {activeModal === "open" && (
+          <AddItemModal
+            handleCloseModal={handleCloseModal}
+            isOpen={activeModal === "open"}
+            onAddItem={handleOnAddItem}
+            buttonText={isLoading ? "Saving..." : "Add garment"}
+          />
+        )}
+        {activeModal === "preview" && (
+          <ItemModal
+            onClose={handleCloseModal}
+            selectedCard={selectedCard}
+            onDeleteItem={openConfirmationModal}
+          />
+        )}
+        {activeModal === "confirm" && (
+          <DeleteConfirmationModal
+            onClose={handleCloseModal}
+            onDeleteConfirm={() => handleCardDelete(selectedCard)}
+            buttonText={isLoading ? "Deleting..." : "Yes, delete item"}
+          />
+        )}
+      </div>
+    </BrowserRouter>
   );
 }
 
