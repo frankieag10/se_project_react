@@ -3,21 +3,18 @@ import "../Main/Main.css";
 import { defaultClothingItems } from "../../utils/constants";
 import WeatherBackground from "../WeatherCard/WeatherCard";
 import ItemCard from "../ItemCard/ItemCard";
+
 function Main({ onSelectCard, temp, cardBackground, dayType }) {
   const getWeatherType = () => {
-    if (temp >= 84) {
-      return "hot";
-    } else if (temp >= 66 && temp <= 83) {
-      return "warm";
-    } else if (temp <= 66) {
-      return "cold";
-    }
+    if (temp >= 84) return "hot";
+    if (temp >= 66 && temp <= 83) return "warm";
+    return "cold";
   };
-  const weatherType = getWeatherType();
 
-  const filteredCards = defaultClothingItems.filter((card) => {
-    return card.weather.toLowerCase() === weatherType;
-  });
+  const weatherType = getWeatherType();
+  const filteredCards = defaultClothingItems.filter(
+    (card) => card.weather.toLowerCase() === weatherType
+  );
   return (
     <main className="Main">
       <section
