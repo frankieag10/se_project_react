@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import "./ToggleSwitch.css";
+import "../ToggleSwitch/ToggleSwitch.css";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
 
 function ToggleSwitch() {

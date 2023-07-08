@@ -1,12 +1,12 @@
 import React from "react";
-import Footer from "../Footer/Footer";
-import Header from "../Header/Header";
-import Main from "../Main/Main";
+import Header from "../Header/Header.js";
+import Footer from "../Footer/Footer.js";
+import Main from "../Main/Main.js";
 import ItemModal from "../ItemModal/ItemModal";
-import "./App.css";
+import "../App/App.css";
 
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route } from "react-router-dom/cjs/react-router-dom";
 
 import Profile from "../Profile/Profile";
 import AddItemModal from "../AddItemModal/AddItemModal";
