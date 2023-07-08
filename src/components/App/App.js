@@ -1,6 +1,6 @@
 import React from "react";
-import Header from "../Header/Header.js";
-import Footer from "../Footer/Footer.js";
+import Header from "../Header/Header";
+import Footer from "../Footer/Footer";
 import Main from "../Main/Main.js";
 import ItemModal from "../ItemModal/ItemModal";
 import "../App/App.css";
