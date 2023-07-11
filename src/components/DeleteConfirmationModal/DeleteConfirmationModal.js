@@ -1,5 +1,5 @@
 import React from "react";
-import "./DeleteConfirmationModal.css";
+import "../DeleteConfirmationModal/DeleteConfirmationModal.css";
 function DeleteConfirmationModal({ onClose, onDeleteConfirm, buttonText }) {
   return (
     <div className="modal modal__type_confirm">

@@ -4,7 +4,7 @@ function ItemCard({ onSelectCard, card }) {
     <div className="card">
       <span className="card__text">{card.name}</span>
       <img
-        src={card.link}
+        src={card.imageUrl}
         className="card__image"
         alt={card.name}
         onClick={() => onSelectCard(card)}
