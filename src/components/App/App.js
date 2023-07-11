@@ -1,33 +1,42 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
-import Main from "../Main/Main.js";
+import Main from "../Main/Main";
 import ItemModal from "../ItemModal/ItemModal";
-import "../App/App.css";
-
-import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
-import { BrowserRouter, Switch, Route } from "react-router-dom/cjs/react-router-dom";
-
 import Profile from "../Profile/Profile";
 import AddItemModal from "../AddItemModal/AddItemModal";
-import api from "../../utils/Api";
-
-import { getWeatherForecast, weatherData, weatherName } from "../../utils/WeatherApi";
 import DeleteConfirmationModal from "../DeleteConfirmationModal/DeleteConfirmationModal";
-import { useEscape } from "../hooks/useEscape";
+import api from "../../utils/Api";
+import { getWeatherForecast, weatherData, weatherName } from "../../utils/WeatherApi";
+import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
+
+function useEscape(onClose) {
+  useEffect(() => {
+    const handleEscape = (e) => {
+      if (e.key === "Escape") {
+        onClose();
+      }
+    };
+    document.addEventListener("keydown", handleEscape);
+    return () => {
+      document.removeEventListener("keydown", handleEscape);
+    };
+  }, [onClose]);
+}
 
 function App() {
-  const [activeModal, setActiveModal] = React.useState("");
-  const [selectedCard, setSelectedCard] = React.useState({});
-  const [temp, setTemp] = React.useState(0);
-  const [cardBackground, setCardBackground] = React.useState("Clear");
-  const [location, setLocation] = React.useState("");
-  const [dayType, setDayType] = React.useState(true);
-  const [currentTemperatureUnit, setCurrentTemperatureUnit] = React.useState("F");
-  const [clothingItems, setClothingItems] = React.useState([]);
-  const [isLoading, setIsLoading] = React.useState(false);
+  const [activeModal, setActiveModal] = useState("");
+  const [selectedCard, setSelectedCard] = useState({});
+  const [temp, setTemp] = useState(0);
+  const [cardBackground, setCardBackground] = useState("Clear");
+  const [location, setLocation] = useState("");
+  const [dayType, setDayType] = useState(true);
+  const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
+  const [clothingItems, setClothingItems] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
-  React.useEffect(() => {
+  useEffect(() => {
     function getItemList() {
       api
         .getItemList()
@@ -75,21 +84,31 @@ function App() {
 
   function handleOnAddItem(item) {
     function makeRequest() {
-      return api.addItem(item).then((newItem) => {
-        console.log(newItem);
-        setClothingItems((prevItems) => [newItem, ...prevItems]);
-        handleCloseModal();
-      });
+      return api
+        .addItem(item)
+        .then((newItem) => {
+          console.log(newItem);
+          setClothingItems((prevItems) => [newItem, ...prevItems]);
+          handleCloseModal();
+        })
+        .catch((error) => {
+          console.error(error);
+        });
     }
     handleSubmit(makeRequest);
   }
 
   function handleCardDelete(card) {
     function makeRequest() {
-      return api.deleteItem(card).then(() => {
-        setClothingItems((prevItems) => prevItems.filter((c) => c.id !== card.id));
-        handleCloseModal();
-      });
+      return api
+        .deleteItem(card)
+        .then(() => {
+          setClothingItems((prevItems) => prevItems.filter((c) => c.id !== card.id));
+          handleCloseModal();
+        })
+        .catch((error) => {
+          console.error(error);
+        });
     }
     handleSubmit(makeRequest);
   }
