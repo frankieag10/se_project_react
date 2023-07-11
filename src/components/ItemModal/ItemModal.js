@@ -1,4 +1,4 @@
-import "./ItemModal.css";
+import "../ItemModal/ItemModal.css";
 function ItemModal({ onClose, selectedCard }) {
   return (
     <div className={`modal modal__type_image`}>
