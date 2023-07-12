@@ -11,20 +11,7 @@ import api from "../../utils/Api";
 import { getWeatherForecast, weatherData, weatherName } from "../../utils/WeatherApi";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
 import "./App.css";
-
-function useEscape(onClose) {
-  useEffect(() => {
-    const handleEscape = (e) => {
-      if (e.key === "Escape") {
-        onClose();
-      }
-    };
-    document.addEventListener("keydown", handleEscape);
-    return () => {
-      document.removeEventListener("keydown", handleEscape);
-    };
-  }, [onClose]);
-}
+import { useEscape } from "../../hooks/useEscape";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
@@ -86,16 +73,10 @@ function App() {
 
   function handleOnAddItem(item) {
     function makeRequest() {
-      return api
-        .addItem(item)
-        .then((newItem) => {
-          console.log(newItem);
-          setClothingItems((prevItems) => [newItem, ...prevItems]);
-          handleCloseModal();
-        })
-        .catch((error) => {
-          console.error(error);
-        });
+      return api.addItem(item).then((newItem) => {
+        console.log(newItem);
+        setClothingItems((prevItems) => [newItem, ...prevItems]);
+      });
     }
     handleSubmit(makeRequest);
   }
@@ -104,7 +85,6 @@ function App() {
     function makeRequest() {
       return api.addItem(card).then(() => {
         setClothingItems((cards) => cards.filter((c) => c.id !== card.id));
-        handleCloseModal();
       });
     }
 

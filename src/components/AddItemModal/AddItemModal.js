@@ -1,17 +1,18 @@
-import { useState } from "react";
+import React from "react";
 import "./AddItemModal.css";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
+import { useForm } from "../../hooks/useForm";
 
-function AddItemModal({ onAddItem, handleCloseModal, isOpen, buttonText, isLoading }) {
-  const [values, setValues] = useState({});
-
-  const handleChange = (event) => {
-    const { value, name } = event.target;
-    setValues({ ...values, [name]: value });
-  };
+function AddItemModal({ onAddItem, handleCloseModal, isOpen = false, buttonText }) {
+  const { values, handleChange } = useForm({
+    name: "",
+    imageUrl: "",
+    weather: "",
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     onAddItem(values);
   };
 
@@ -39,6 +40,7 @@ function AddItemModal({ onAddItem, handleCloseModal, isOpen, buttonText, isLoadi
           name="name"
           minLength={1}
           maxLength={30}
+          value={values.name}
           onChange={handleChange}
         />
         <label
@@ -53,6 +55,7 @@ function AddItemModal({ onAddItem, handleCloseModal, isOpen, buttonText, isLoadi
           className="form__input"
           placeholder="Image URL"
           name="imageUrl"
+          value={values.imageUrl}
           onChange={handleChange}
         />
       </fieldset>
@@ -69,6 +72,7 @@ function AddItemModal({ onAddItem, handleCloseModal, isOpen, buttonText, isLoadi
             name="weather"
             id="weather-hot"
             className="form__input"
+            checked={values.weather === "Hot"}
           />{" "}
           Hot
         </label>
@@ -83,6 +87,7 @@ function AddItemModal({ onAddItem, handleCloseModal, isOpen, buttonText, isLoadi
             name="weather"
             id="weather-warm"
             className="form__input"
+            checked={values.weather === "Warm"}
           />{" "}
           Warm
         </label>
@@ -97,6 +102,7 @@ function AddItemModal({ onAddItem, handleCloseModal, isOpen, buttonText, isLoadi
             name="weather"
             id="weather-cold"
             className="form__input"
+            checked={values.weather === "Cold"}
           />{" "}
           Cold
         </label>

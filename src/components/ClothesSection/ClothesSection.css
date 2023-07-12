@@ -16,7 +16,6 @@
   margin-top: 16px;
 }
 .clothes-section__button {
-  /* width: 88px; */
   height: 25px;
   color: rgba(0, 0, 0, 0.6);
   font-size: 20px;
@@ -39,7 +38,6 @@
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-  /* margin: 15px 0 0 0; */
   padding: 0;
 }
 .card-container {

@@ -13,7 +13,7 @@ function ItemModal({ onClose, selectedCard, onDeleteItem }) {
           <img
             src={selectedCard.imageUrl}
             className="modal__image"
-            alt=""
+            alt={selectedCard.name}
           />
         </div>
         <div className="modal__footer">

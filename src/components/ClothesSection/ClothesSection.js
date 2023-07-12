@@ -1,7 +1,6 @@
 import React from "react";
 import "./ClothesSection.css";
 import ItemCard from "../ItemCard/ItemCard";
-//import { weatherOptions } from "../../utils/constants";
 
 function ClothesSection({ sectionData, onSelectCard, handleAddButton }) {
   return (
