@@ -1,7 +1,8 @@
-import "../ItemModal/ItemModal.css";
-function ItemModal({ onClose, selectedCard }) {
+import "./ItemModal.css";
+
+function ItemModal({ onClose, selectedCard, onDeleteItem }) {
   return (
-    <div className={`modal modal__type_image`}>
+    <div className="modal modal__type_image">
       <div className="modal__content">
         <div className="modal__body">
           <button
@@ -10,14 +11,22 @@ function ItemModal({ onClose, selectedCard }) {
             onClick={onClose}
           />
           <img
-            src={selectedCard.link}
+            src={selectedCard.imageUrl}
             className="modal__image"
-            alt={selectedCard.name}
+            alt=""
           />
         </div>
         <div className="modal__footer">
-          <p className="modal__paragraph modal__item-name">{selectedCard.name}</p>
-          <p className="modal__paragraph modal__weather-type">{selectedCard.weather}</p>
+          <div className="modal__footer-top">
+            <p className="modal__paragraph modal__item-name">{selectedCard.name}</p>
+            <button
+              className="modal__delete-button"
+              onClick={onDeleteItem}
+            >
+              Delete item
+            </button>
+          </div>
+          <p className="modal__paragraph modal__weather-type">Weather: {selectedCard.weather}</p>
         </div>
       </div>
     </div>

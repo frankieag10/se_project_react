@@ -1,7 +1,7 @@
 const baseUrl = "https://my-json-server.typicode.com/frankieag10/se_project_react";
 //const baseUrl = "http://localhost:3001";
 
-const handleServerResponse = (res) => {
+export const handleServerResponse = (res) => {
   return res.ok ? res.json() : Promise.reject(`Error:${res.status}`);
 };
 

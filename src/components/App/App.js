@@ -102,16 +102,12 @@ function App() {
 
   function handleCardDelete(card) {
     function makeRequest() {
-      return api
-        .deleteItem(card)
-        .then(() => {
-          setClothingItems((prevItems) => prevItems.filter((c) => c.id !== card.id));
-          handleCloseModal();
-        })
-        .catch((error) => {
-          console.error(error);
-        });
+      return api.addItem(card).then(() => {
+        setClothingItems((cards) => cards.filter((c) => c.id !== card.id));
+        handleCloseModal();
+      });
     }
+
     handleSubmit(makeRequest);
   }
 
@@ -134,7 +130,7 @@ function App() {
   };
 
   const openConfirmationModal = () => {
-    setActiveModal("preview");
+    setActiveModal("confirm delete modal opened");
     setShowConfirmationModal(true);
   };
 
