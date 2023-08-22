@@ -1,12 +1,21 @@
 import React from "react";
 import "./Header.css";
 import logo from "../../images/Logo.svg";
-import avatarImage from "../../images/avatar.svg";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
-function Header({ handleOpenModal, currentLocation }) {
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+
+function Header({
+  handleOpenModal,
+  isLoggedIn,
+  handleOpenLoginModal,
+  handleOpenSignupModal,
+  currenLocation,
+}) {
   const currentDate = new Date().toLocaleString("default", { month: "long", day: "numeric" });
 
+  const userData = React.useContext(CurrentUserContext);
+  console.log(userData);
   return (
     <header>
       <nav className="nav">
@@ -20,10 +29,10 @@ function Header({ handleOpenModal, currentLocation }) {
           <button className="nav__menu-close"></button>
           <div className="nav__user-info">
             <Link to="/profile">
-              <p className="nav__user-title">Terrence Tegegne</p>
+              <p className="nav__user-title">{"userData?.name"}</p>
               <img
                 className="nav__avatar"
-                src={avatarImage}
+                src={"userData?.avatar"}
                 alt="avatar"
               />
             </Link>
@@ -47,31 +56,56 @@ function Header({ handleOpenModal, currentLocation }) {
             />
           </Link>
           <p className="header__date">
-            {currentDate}, {currentLocation}
+            {currentDate}, {currenLocation}
           </p>
         </div>
-        <div className="header__right-side">
-          <ToggleSwitch />
-          <button
-            className="header__button"
-            onClick={handleOpenModal}
-          >
-            + Add clothes
-          </button>
-          <Link
-            to="/profile"
-            className="header__link"
-          >
-            <p className="header__user-title">Terrance Tegegne</p>
-          </Link>
-          <Link to="/profile">
-            <img
-              className="header__avatar"
-              src={avatarImage}
-              alt="avatar"
-            />
-          </Link>
-        </div>
+
+        {isLoggedIn ? (
+          <div className="header__right-side">
+            <button
+              className="header__button"
+              onClick={handleOpenModal}
+            >
+              + Add clothes
+            </button>
+            <ToggleSwitch />
+            <Link
+              to="/profile"
+              className="header__link"
+            >
+              <p className="header__user-title">{isLoggedIn ? userData?.name : "No logged in"}</p>
+            </Link>
+            <Link to="/profile">
+              {userData?.avatar ? (
+                <img
+                  className="header__avatar"
+                  src={userData?.avatar}
+                  alt="avatar"
+                />
+              ) : (
+                <div className="header__avatar-placeholder">
+                  {Array.from(userData?.name)[0].toUpperCase()}
+                </div>
+              )}
+            </Link>
+          </div>
+        ) : (
+          <div className="header__right-side">
+            <ToggleSwitch />
+            <button
+              className="header__login-button"
+              onClick={handleOpenLoginModal}
+            >
+              Log in
+            </button>
+            <button
+              className="header__signup-button"
+              onClick={handleOpenSignupModal}
+            >
+              Sign up
+            </button>
+          </div>
+        )}
       </div>
     </header>
   );

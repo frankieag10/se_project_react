@@ -1,0 +1,40 @@
+@font-face {
+  font-family: "Familjen Grotesk";
+  src: url("../../../public/fonts/Familjen_Grotesk/FamiljenGrotesk-Regular.ttf");
+}
+.modal__content {
+  width: 496px;
+  height: auto;
+  padding: 36px 28px;
+}
+.modal__form {
+}
+.modal__button {
+  font-family: "Familjen Grotesk";
+  grid-area: login;
+  padding: 8px 16px;
+  width: 73px;
+  height: 36px;
+}
+.modal__register {
+  position: absolute;
+  left: 112px;
+  bottom: 40px;
+  font-family: "Familjen Grotesk";
+  background-color: transparent;
+  color: rgba(0, 0, 0, 0.5);
+  font-family: Cabinet Grotesk;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px; /* 125% */
+  border: none;
+  cursor: pointer;
+  transition: all 260ms;
+  padding: 0;
+  margin: 0;
+  margin-top: 22px;
+}
+.modal__register:hover {
+  color: #000;
+}

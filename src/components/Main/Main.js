@@ -48,7 +48,7 @@ function Main({ onSelectCard, weatherTemp, cardBackground, dayType, cards }) {
             <ItemCard
               card={item}
               onSelectCard={onSelectCard}
-              key={item.id}
+              key={item._id}
             />
           ))}
         </div>

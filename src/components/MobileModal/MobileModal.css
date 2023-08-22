@@ -1,0 +1,76 @@
+@media screen and (min-width: 320px) and (max-width: 768px) {
+  .modal__image {
+    max-width: 320px;
+  }
+
+  .modal__confirm-close {
+    margin: -220px 250px 0 450px;
+  }
+
+  .modal__container-item,
+  .modal__confirm-item {
+    max-width: 320px;
+    font-size: 1rem;
+  }
+
+  .modal__button-close {
+    margin-top: 5%;
+    margin-left: 85%;
+  }
+
+  .modal__header {
+    visibility: visible;
+    position: absolute;
+    height: 208px;
+    width: 90%;
+    top: 18px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 0 auto;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: #ffffff;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+    font-family: "Grotesk", "Arial", sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    z-index: 3;
+  }
+
+  .modal__button-cancel {
+    margin-top: 18px;
+  }
+
+  .modal__confirm-delete {
+    margin-top: 18px;
+  }
+
+  .modal__button-delete {
+    font-size: 1rem;
+    line-height: 1rem;
+  }
+
+  .modal__hamburger-button-close {
+    top: 27px;
+    right: 27px;
+    margin: 0;
+    display: flex;
+    position: absolute;
+    background-image: url(../images/close.svg);
+    filter: contrast(0.5);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    width: 14px;
+    height: 14px;
+    border: 0;
+    margin: 27px 27px 0 457px;
+    border-radius: 0px;
+    transition: opacity 1s ease;
+    cursor: pointer;
+  }
+}

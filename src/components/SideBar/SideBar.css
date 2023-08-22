@@ -6,6 +6,9 @@
   width: 229px;
   padding: 0 0 0 40px;
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 .sidebar__info {
   width: 229px;
@@ -21,6 +24,8 @@
   height: 56px;
   margin: 0;
   padding: 0;
+  border-radius: 50%;
+  object-fit: cover;
 }
 .sidebar__user-title {
   color: #000;
@@ -31,4 +36,35 @@
   line-height: normal;
   margin: 0;
   padding: 0;
+}
+.sidebar__edit-info {
+  margin-top: 16px;
+  cursor: pointer;
+  color: #000;
+  font-family: "Familjen Grotesk";
+  background-color: transparent;
+  border: none;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  transition: all 200ms;
+}
+.sidebar__edit-info:hover {
+  color: grey;
+}
+.sidebar__logout {
+  cursor: pointer;
+  color: #000;
+  font-family: "Familjen Grotesk";
+  background-color: transparent;
+  border: none;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  transition: all 200ms;
+}
+.sidebar__logout:hover {
+  color: grey;
 }
