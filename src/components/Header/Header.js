@@ -10,7 +10,7 @@ function Header({
   isLoggedIn,
   handleOpenLoginModal,
   handleOpenSignupModal,
-  currenLocation,
+  currentLocation,
 }) {
   const currentDate = new Date().toLocaleString("default", { month: "long", day: "numeric" });
 
@@ -56,7 +56,7 @@ function Header({
             />
           </Link>
           <p className="header__date">
-            {currentDate}, {currenLocation}
+            {currentDate}, {currentLocation}
           </p>
         </div>
 
@@ -84,7 +84,7 @@ function Header({
                 />
               ) : (
                 <div className="header__avatar-placeholder">
-                  {Array.from(userData?.name)[0].toUpperCase()}
+                  {userData.name.charAt().toUpperCase()}
                 </div>
               )}
             </Link>

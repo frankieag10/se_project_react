@@ -1,12 +1,39 @@
 import "./ItemCard.css";
-function ItemCard({ onSelectCard, card }) {
+import { useContext, useState } from "react";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+
+function ItemCard({ onSelectCard, card, onLikeClick, isLoggedIn }) {
+  const currentUser = useContext(CurrentUserContext);
+  console.log(isLoggedIn);
+  const checkLikeStatus = () => {
+    card.likes.some((user) => user._id === currentUser._id);
+  };
+  const [isLiked, setIsLiked] = useState(checkLikeStatus);
+
+  const handleLikeClick = () => {
+    setIsLiked(!isLiked);
+    onLikeClick({ id: card._id, isLiked: !isLiked, user: currentUser });
+  };
+
   return (
     <div className="card">
-      <span className="card__text">{card.name}</span>
+      <div className="card__header">
+        <span className="card__text">{card.name}</span>
+        {isLoggedIn ? (
+          <button
+            className={
+              card.likes.includes(currentUser._id) ? "card__like-button_liked" : "card__like-button"
+            }
+            onClick={handleLikeClick}
+          ></button>
+        ) : (
+          ""
+        )}
+      </div>
       <img
         src={card.imageUrl}
         className="card__image"
-        alt={card.name}
+        alt="image item"
         onClick={() => onSelectCard(card)}
       />
     </div>

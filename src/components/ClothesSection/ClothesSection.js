@@ -3,8 +3,9 @@ import "./ClothesSection.css";
 import ItemCard from "../ItemCard/ItemCard";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
-function ClothesSection({ sectionData, onSelectCard, handleAddButton }) {
+function ClothesSection({ sectionData, onSelectCard, onLikeClick, handleAddButton, isLoggedIn }) {
   const currentUser = React.useContext(CurrentUserContext);
+
   return (
     <div className="clothes-section">
       <div className="clothes-section__header">
@@ -23,6 +24,8 @@ function ClothesSection({ sectionData, onSelectCard, handleAddButton }) {
           return (
             isOwner && (
               <ItemCard
+                isLoggedIn={isLoggedIn}
+                onLikeClick={onLikeClick}
                 card={item}
                 key={item._id}
                 onSelectCard={onSelectCard}

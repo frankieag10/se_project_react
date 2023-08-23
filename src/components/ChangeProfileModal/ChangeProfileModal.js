@@ -5,9 +5,9 @@ import { useForm } from "../../hooks/useForm";
 import "../ChangeProfileModal/ChangeProfileModal.css";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
-function ChangeProfileModal({ handleCloseModal, isOpen = false, buttonText, onUpdateUser }) {
+function ChangeProfileModal({ handleCloseModal, isOpen = { isOpen }, buttonText, onUpdateUser }) {
   const userData = useContext(CurrentUserContext);
-  const { values, handleChange, setValues } = useForm(userData);
+  const { values, handleChange, setValues } = useForm({});
 
   useEffect(() => {
     if (!values.name && userData?.name) {

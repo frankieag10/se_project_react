@@ -1,5 +1,4 @@
 import { handleServerResponse } from "../utils/Api";
-
 const baseUrl = "http://localhost:3001";
 
 function request(url, options) {

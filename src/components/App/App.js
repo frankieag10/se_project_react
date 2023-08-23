@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Switch } from "react-router-dom/cjs/react-router-dom.min";
 import { Route, useHistory } from "react-router-dom/cjs/react-router-dom";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import Main from "../Main/Main";
@@ -18,7 +19,6 @@ import auth from "../../utils/auth";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import ChangeProfileModal from "../ChangeProfileModal/ChangeProfileModal";
-import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
@@ -240,6 +240,7 @@ function App() {
               path="/profile"
             >
               <Profile
+                isLoggedIn={isLoggedIn}
                 cards={clothingItems}
                 onSelectCard={handleSelectedCard}
                 handleOpenModal={handleOpenModal}
