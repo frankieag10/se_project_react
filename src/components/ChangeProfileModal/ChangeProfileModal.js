@@ -1,23 +1,22 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect, useContext } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useForm } from "../../hooks/useForm";
 import "../ChangeProfileModal/ChangeProfileModal.css";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
-function ChangeProfileModal({
-  handleCloseModal,
-  isOpen = { isOpen },
-  buttonText,
-  isLoading,
-  onUpdateUser,
-}) {
-  const { values, handleChange, setValues } = useForm({});
-  const userData = React.useContext(CurrentUserContext);
+function ChangeProfileModal({ handleCloseModal, isOpen = false, buttonText, onUpdateUser }) {
+  const userData = useContext(CurrentUserContext);
+  const { values, handleChange, setValues } = useForm(userData);
+
+  useEffect(() => {
+    if (!values.name && userData?.name) {
+      setValues(userData);
+    }
+  }, [values.name, userData, setValues]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setValues("");
     onUpdateUser(values);
   };
 
@@ -46,7 +45,7 @@ function ChangeProfileModal({
           minLength={1}
           maxLength={30}
           onChange={handleChange}
-          value={userData.name}
+          value={values.name}
         />
         <label
           htmlFor="url"
@@ -61,7 +60,7 @@ function ChangeProfileModal({
           placeholder="Avatar URL"
           name="avatar"
           onChange={handleChange}
-          value={userData.avatar}
+          value={values.avatar}
         />
       </fieldset>
     </ModalWithForm>

@@ -36,20 +36,6 @@ function App() {
   const [currentUser, setCurrentUser] = useState({});
   const [token, setToken] = useState(localStorage.getItem("jwt"));
 
-  function getItemList() {
-    function makeRequest() {
-      return api
-        .getItemList()
-        .then((data) => {
-          setClothingItems(data);
-        })
-        .catch((err) => {
-          console.error(err);
-        });
-    }
-    handleSubmit(makeRequest);
-  }
-
   useEffect(() => {
     getWeatherForecast()
       .then((data) => {
@@ -83,6 +69,20 @@ function App() {
       setIsLoggedIn(false);
     }
   }, [token]);
+
+  function getItemList() {
+    function makeRequest() {
+      return api
+        .getItemList()
+        .then((data) => {
+          setClothingItems(data);
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    }
+    handleSubmit(makeRequest);
+  }
 
   function handleSubmit(request) {
     setIsLoading(true);
