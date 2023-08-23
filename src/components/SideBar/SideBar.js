@@ -5,6 +5,8 @@ import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 function SideBar({ handleOpenEditModal }) {
   const userData = React.useContext(CurrentUserContext);
 
+  const firstLetter = userData?.name ? userData.name.charAt(0).toUpperCase() : "";
+
   return (
     <div className="sidebar">
       <div className="sidebar__info">
@@ -15,9 +17,7 @@ function SideBar({ handleOpenEditModal }) {
             alt="avatar"
           />
         ) : (
-          <div className="header__avatar-placeholder">
-            {Array.from(userData?.name)[0].toUpperCase()}
-          </div>
+          <div className="header__avatar-placeholder">{firstLetter}</div>
         )}
         <p className="sidebar__user-title">{userData.name}</p>
       </div>

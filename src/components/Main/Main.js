@@ -4,7 +4,15 @@ import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperature
 import WeatherCard from "../WeatherCard/WeatherCard";
 import ItemCard from "../ItemCard/ItemCard";
 
-function Main({ onSelectCard, weatherTemp, cardBackground, dayType, cards }) {
+function Main({
+  onSelectCard,
+  onCardLike,
+  weatherTemp,
+  cardBackground,
+  dayType,
+  cards,
+  isLoggedIn,
+}) {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
   const temp = weatherTemp?.temprature?.[currentTemperatureUnit] || 999;
   const currentTemp = weatherTemp?.weather?.temperature?.[currentTemperatureUnit];
@@ -44,13 +52,17 @@ function Main({ onSelectCard, weatherTemp, cardBackground, dayType, cards }) {
           {currentTemperatureUnit === "F" ? "°F" : "°C"} / You may want to wear:
         </span>
         <div className="card-container">
-          {filteredCards.map((item) => (
-            <ItemCard
-              card={item}
-              onSelectCard={onSelectCard}
-              key={item._id}
-            />
-          ))}
+          {filteredCards.map((item) => {
+            return (
+              <ItemCard
+                isLoggedIn={isLoggedIn}
+                onLikeClick={onCardLike}
+                card={item}
+                onSelectCard={onSelectCard}
+                key={item._id}
+              />
+            );
+          })}
         </div>
       </section>
     </main>

@@ -36,7 +36,7 @@ function App() {
   const [currentUser, setCurrentUser] = useState({});
   const [token, setToken] = useState(localStorage.getItem("jwt"));
 
-  useEffect(() => {
+  React.useEffect(() => {
     getWeatherForecast()
       .then((data) => {
         const weatherCondition = weatherName(data);
@@ -59,7 +59,7 @@ function App() {
       });
   }, []);
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (token) {
       handleTokenCheck(token).finally(() => {
         setIsLoading(true);
@@ -228,6 +228,7 @@ function App() {
               path="/"
             >
               <Main
+                isLoggedIn={isLoggedIn}
                 onSelectCard={handleSelectedCard}
                 cards={clothingItems}
                 weatherTemp={temp}
