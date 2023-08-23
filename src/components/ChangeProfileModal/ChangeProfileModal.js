@@ -6,7 +6,7 @@ import "../ChangeProfileModal/ChangeProfileModal.css";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 function ChangeProfileModal({ handleCloseModal, isOpen = { isOpen }, buttonText, onUpdateUser }) {
-  const userData = useContext(CurrentUserContext);
+  const userData = React.useContext(CurrentUserContext);
   const { values, handleChange, setValues } = useForm({});
 
   useEffect(() => {

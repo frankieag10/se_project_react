@@ -14,7 +14,8 @@ function Header({
 }) {
   const currentDate = new Date().toLocaleString("default", { month: "long", day: "numeric" });
 
-  const firstLetter = userData?.name ? userData.name.charAt(0).toUpperCase() : "";
+  //const firstLetter = userData?.name ? userData.name.charAt(0).toUpperCase() : "";
+  //{userData.name.charAt().toUpperCase()}
 
   const userData = React.useContext(CurrentUserContext);
   console.log(userData);
@@ -85,7 +86,10 @@ function Header({
                   alt="avatar"
                 />
               ) : (
-                <div className="header__avatar-placeholder">{firstLetter}</div>
+                <div className="header__avatar-placeholder">
+                  {" "}
+                  {userData.name.charAt().toUpperCase()}
+                </div>
               )}
             </Link>
           </div>

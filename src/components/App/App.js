@@ -21,19 +21,19 @@ import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import ChangeProfileModal from "../ChangeProfileModal/ChangeProfileModal";
 
 function App() {
-  const [activeModal, setActiveModal] = useState("");
-  const [selectedCard, setSelectedCard] = useState({});
-  const [temp, setTemp] = useState(0);
-  const [cardBackground, setCardBackground] = useState("Clear");
-  const [location, setLocation] = useState("");
-  const [dayType, setDayType] = useState(true);
-  const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
-  const [clothingItems, setClothingItems] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [showConfirmationModal, setShowConfirmationModal] = useState(false);
+  const [activeModal, setActiveModal] = React.useState("");
+  const [selectedCard, setSelectedCard] = React.useState({});
+  const [temp, setTemp] = React.useState(0);
+  const [cardBackground, setCardBackground] = React.useState("Clear");
+  const [location, setLocation] = React.useState("");
+  const [dayType, setDayType] = React.useState(true);
+  const [currentTemperatureUnit, setCurrentTemperatureUnit] = React.useState("F");
+  const [clothingItems, setClothingItems] = React.useState([]);
+  const [isLoading, setIsLoading] = React.useState(false);
+  const [isLoggedIn, setIsLoggedIn] = React.useState(false);
+  const [showConfirmationModal, setShowConfirmationModal] = React.useState(false);
   const history = useHistory();
-  const [currentUser, setCurrentUser] = useState({});
+  const [currentUser, setCurrentUser] = React.useState({});
   const [token, setToken] = useState(localStorage.getItem("jwt"));
 
   React.useEffect(() => {
