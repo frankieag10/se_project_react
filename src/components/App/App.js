@@ -288,7 +288,7 @@ function App() {
         {activeModal === "register" && (
           <RegisterModal
             handleCloseModal={handleCloseModal}
-            isOpen={activeModal === "login"}
+            isOpen={activeModal === "register"}
             buttonText="Next"
             handleOpenLoginModal={handleOpenLoginModal}
             handleOpenSignupModal={handleOpenSignupModal}

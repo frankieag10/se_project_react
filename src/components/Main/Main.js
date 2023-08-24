@@ -59,7 +59,7 @@ function Main({
                 onLikeClick={onCardLike}
                 card={item}
                 onSelectCard={onSelectCard}
-                key={item._id}
+                key={item.id}
               />
             );
           })}

@@ -9,7 +9,7 @@ function ChangeProfileModal({ handleCloseModal, isOpen = { isOpen }, buttonText,
   const userData = React.useContext(CurrentUserContext);
   const { values, handleChange, setValues } = useForm({});
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (!values.name && userData?.name) {
       setValues(userData);
     }
