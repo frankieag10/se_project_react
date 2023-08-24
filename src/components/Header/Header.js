@@ -87,7 +87,6 @@ function Header({
                 />
               ) : (
                 <div className="header__avatar-placeholder">
-                  {" "}
                   {userData.name.charAt().toUpperCase()}
                 </div>
               )}

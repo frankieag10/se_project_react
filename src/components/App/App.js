@@ -124,7 +124,7 @@ function App() {
     }
     handleSubmit(makeRequest);
   }
-  function onSignInUser({ email, password }) {
+  /* function onSignInUser({ email, password }) {
     function makeRequest() {
       return auth.signinUser({ email, password }).then((data) => {
         if (data.token) {
@@ -133,6 +133,24 @@ function App() {
           localStorage.setItem("jwt", data.token);
           history.push("/profile");
           handleCloseModal();
+        }
+      });
+    }
+    handleSubmit(makeRequest);
+  }
+*/
+
+  function onSignInUser({ email, password }) {
+    function makeRequest() {
+      return auth.signinUser({ email, password }).then((data) => {
+        if (data.token) {
+          console.log(data);
+          setIsLoggedIn(true);
+          localStorage.setItem("jwt", data.token);
+          handleTokenCheck(data.token).then(() => {
+            history.push("/profile");
+            handleCloseModal();
+          });
         }
       });
     }
@@ -212,9 +230,7 @@ function App() {
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="app">
-        <CurrentTemperatureUnitContext.Provider
-          value={{ currentTemperatureUnit, handleToggleSwitchChange }}
-        >
+        <CurrentTemperatureUnitContext.Provider value={{ currentTemperatureUnit, handleToggleSwitchChange }}>
           <Header
             isLoggedIn={isLoggedIn}
             handleOpenModal={handleOpenModal}
