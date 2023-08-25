@@ -34,7 +34,7 @@ function App() {
   const [showConfirmationModal, setShowConfirmationModal] = React.useState(false);
   const history = useHistory();
   const [currentUser, setCurrentUser] = React.useState({});
-  const [token, setToken] = useState(localStorage.getItem("jwt"));
+  const [token, setToken] = React.useState(localStorage.getItem("jwt"));
 
   React.useEffect(() => {
     getWeatherForecast()
