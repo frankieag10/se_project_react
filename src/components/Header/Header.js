@@ -5,13 +5,7 @@ import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
-function Header({
-  handleOpenModal,
-  isLoggedIn,
-  handleOpenLoginModal,
-  handleOpenSignupModal,
-  currentLocation,
-}) {
+function Header({ handleOpenModal, isLoggedIn, handleOpenLoginModal, handleOpenSignupModal, currentLocation }) {
   const currentDate = new Date().toLocaleString("default", { month: "long", day: "numeric" });
 
   //const firstLetter = userData?.name ? userData.name.charAt(0).toUpperCase() : "";
@@ -86,9 +80,7 @@ function Header({
                   alt="avatar"
                 />
               ) : (
-                <div className="header__avatar-placeholder">
-                  {userData.name.charAt().toUpperCase()}
-                </div>
+                <div className="header__avatar-placeholder">{userData?.name?.charAt().toUpperCase()}</div>
               )}
             </Link>
           </div>
