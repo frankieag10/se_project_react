@@ -21,8 +21,10 @@ function Main({ onSelectCard, onCardLike, weatherTemp, cardBackground, dayType, 
 
   const weatherType = getWeatherType();
 
-  const filteredCards = cards.filter((card) => card.weather.toLowerCase() === weatherType);
-
+  //const filteredCards = cards.filter((card) => card.weather.toLowerCase() === weatherType);
+  const filteredCards = cards.filter((card) => {
+    return card.weather.toLowerCase() === weatherType;
+  });
   return (
     <main className="Main">
       <section
