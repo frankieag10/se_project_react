@@ -125,7 +125,7 @@ function App() {
     handleSubmit(makeRequest);
   }
 
-  function onSignInUser({ email, password }) {
+  /*function onSignInUser({ email, password }) {
     function makeRequest() {
       return auth.signinUser({ email, password }).then((data) => {
         if (data.token) {
@@ -140,6 +140,26 @@ function App() {
       });
     }
     handleSubmit(makeRequest);
+  }*/
+
+  function onSignInUser({ email, password }) {
+    function makeRequest() {
+      return auth.signinUser({ email, password }).then((data) => {
+        if (data.token) {
+          console.log("sign in data", data);
+          setIsLoggedIn(true);
+          localStorage.setItem("jwt", data.token);
+          handleTokenCheck(data.token);
+          history.push("/profile");
+          handleCloseModal();
+        }
+      });
+    }
+    handleSubmit(makeRequest);
+  }
+  function onLogoutUser() {
+    setIsLoggedIn(false);
+    localStorage.removeItem("jwt");
   }
 
   function onUpdateUser({ name, avatar }) {
@@ -248,6 +268,7 @@ function App() {
                 handleOpenModal={handleOpenModal}
                 handleOpenChangeModal={handleOpenChangeModal}
                 onUpdateUser={onUpdateUser}
+                onLogoutUser={onLogoutUser}
               />
             </ProtectedRoute>
           </Switch>
