@@ -4,15 +4,7 @@ import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperature
 import WeatherCard from "../WeatherCard/WeatherCard";
 import ItemCard from "../ItemCard/ItemCard";
 
-function Main({
-  onSelectCard,
-  onCardLike,
-  weatherTemp,
-  cardBackground,
-  dayType,
-  cards,
-  isLoggedIn,
-}) {
+function Main({ onSelectCard, onCardLike, weatherTemp, cardBackground, dayType, cards, isLoggedIn }) {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
   const temp = weatherTemp?.temprature?.[currentTemperatureUnit] || 999;
   const currentTemp = weatherTemp?.weather?.temperature?.[currentTemperatureUnit];
@@ -59,7 +51,7 @@ function Main({
                 onLikeClick={onCardLike}
                 card={item}
                 onSelectCard={onSelectCard}
-                key={item.id}
+                key={item._id}
               />
             );
           })}

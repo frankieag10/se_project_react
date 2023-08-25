@@ -124,21 +124,6 @@ function App() {
     }
     handleSubmit(makeRequest);
   }
-  /* function onSignInUser({ email, password }) {
-    function makeRequest() {
-      return auth.signinUser({ email, password }).then((data) => {
-        if (data.token) {
-          console.log(data);
-          setIsLoggedIn(true);
-          localStorage.setItem("jwt", data.token);
-          history.push("/profile");
-          handleCloseModal();
-        }
-      });
-    }
-    handleSubmit(makeRequest);
-  }
-*/
 
   function onSignInUser({ email, password }) {
     function makeRequest() {
