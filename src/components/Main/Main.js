@@ -8,7 +8,7 @@ import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperature
 function Main({ onSelectCard, onCardLike, weatherTemp, cardBackground, dayType, cards, isLoggedIn }) {
   const { currentTemperatureUnit } = React.useContext(CurrentTemperatureUnitContext);
   const temp = weatherTemp?.temprature?.[currentTemperatureUnit] || 999;
-  const currenTemp = weatherTemp?.weather?.temperature?.[currentTemperatureUnit];
+  const currentTemp = weatherTemp?.weather?.temperature?.[currentTemperatureUnit];
   const getWeatherType = () => {
     if (temp >= 86) {
       return "hot";
@@ -45,7 +45,7 @@ function Main({ onSelectCard, onCardLike, weatherTemp, cardBackground, dayType, 
         id="items-section"
       >
         <span className="weather__suggest">
-          Today is {currenTemp}
+          Today is {currentTemp}
           {currentTemperatureUnit === "F" ? "°F" : "°C"} / You may want to wear:
         </span>
         <div className="card-container">
