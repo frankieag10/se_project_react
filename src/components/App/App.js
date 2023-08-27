@@ -51,8 +51,11 @@ function App() {
           setDayType(true);
         } else if (Date.now() <= sunset) {
           setDayType(false);
-          getItemList();
         }
+        // getting items
+        getItemList();
+
+        // Weather Api catch
       })
       .catch((err) => {
         console.error(err);
@@ -60,6 +63,7 @@ function App() {
   }, []);
 
   React.useEffect(() => {
+    // const token = localStorage.getItem('jwt');
     if (token) {
       handleTokenCheck(token).finally(() => {
         setIsLoading(true);
@@ -71,16 +75,20 @@ function App() {
   }, [token]);
 
   function getItemList() {
+    // here we create a function that returns a promise
     function makeRequest() {
+      // `return` lets us use a promise chain `then, catch, finally`
       return api
         .getItemList()
         .then((data) => {
           setClothingItems(data);
+          // daatabase api catch
         })
         .catch((err) => {
           console.error(err);
         });
     }
+    // here we call handleSubmit passing the request
     handleSubmit(makeRequest);
   }
 
@@ -167,6 +175,7 @@ function App() {
       return auth
         .updateUser({ name, avatar }, token)
         .then((res) => {
+          setCurrentUser(res);
           console.log(res);
           handleCloseModal();
         })

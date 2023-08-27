@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
 import "../Main/Main.css";
-import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
+
 import WeatherCard from "../WeatherCard/WeatherCard";
 import ItemCard from "../ItemCard/ItemCard";
-
+import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
 function Main({ onSelectCard, onCardLike, weatherTemp, cardBackground, dayType, cards, isLoggedIn }) {
-  const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
+  const { currentTemperatureUnit } = React.useContext(CurrentTemperatureUnitContext);
   const temp = weatherTemp?.temprature?.[currentTemperatureUnit] || 999;
   const currentTemp = weatherTemp?.weather?.temperature?.[currentTemperatureUnit];
 
@@ -21,10 +21,12 @@ function Main({ onSelectCard, onCardLike, weatherTemp, cardBackground, dayType, 
 
   const weatherType = getWeatherType();
 
-  //const filteredCards = cards.filter((card) => card.weather.toLowerCase() === weatherType);
+  console.log("cards not found", cards);
+
   const filteredCards = cards.filter((card) => {
-    return card.weather.toLowerCase() === weatherType;
+    return card.weather && card.weather.toLowerCase() === weatherType;
   });
+
   return (
     <main className="Main">
       <section
@@ -53,7 +55,8 @@ function Main({ onSelectCard, onCardLike, weatherTemp, cardBackground, dayType, 
                 onLikeClick={onCardLike}
                 card={item}
                 onSelectCard={onSelectCard}
-                key={item._id}
+                //key={item._id}
+                key={item?._id || item?.id}
               />
             );
           })}
