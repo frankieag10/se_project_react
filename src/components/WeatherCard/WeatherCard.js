@@ -4,9 +4,8 @@ import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperature
 import "./WeatherCard.css";
 
 function WeatherCard({ day, type, temperature }) {
-  const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
+  const { currentTemperatureUnit } = React.useContext(CurrentTemperatureUnitContext);
 
-  console.log(temperature?.weather?.temperature?.[currentTemperatureUnit]);
   const weatherOption = weatherOptions.find((item) => {
     return item.day === day && item.type === type;
   });
@@ -14,11 +13,10 @@ function WeatherCard({ day, type, temperature }) {
   return (
     <div className="weather-card">
       <span className="weather__temperature">
-        {temperature?.weather?.temperature?.[currentTemperatureUnit]}{" "}
-        {currentTemperatureUnit === "F" ? "°F" : "°C"}
+        {temperature?.weather?.temperature?.[currentTemperatureUnit]} {currentTemperatureUnit === "F" ? "°F" : "°C"}
       </span>
       <img
-        className="weather__background"
+        className="weather__bg"
         src={imageSourceUrl}
         alt="weather background"
       />

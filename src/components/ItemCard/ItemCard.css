@@ -15,10 +15,13 @@
   position: relative;
   overflow: hidden;
   margin: 35px 0 0 0;
-  padding: 0;
+  padding: 16px;
   display: flex;
   justify-content: center;
   border: 1px solid rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .card__text {
   font-style: normal;
@@ -26,8 +29,6 @@
   font-size: 16px;
   line-height: 20px;
   color: rgba(0, 0, 0, 0.6);
-  position: absolute;
-  top: 16px;
   background-color: #fff;
   border-radius: 4px;
   padding: 2px 12px;
@@ -39,4 +40,36 @@
   margin: 0;
   padding: 0;
   cursor: zoom-in;
+}
+.card__header {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 5px;
+}
+.card__like-button {
+  background-color: transparent;
+  width: 20px;
+  height: auto;
+  background: url(../../images/likeEmpty.svg) center no-repeat;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: 250ms all ease;
+}
+.card__like-button:hover {
+  transform: scale(1.1);
+}
+.card__like-button_liked {
+  background-color: transparent;
+  width: 20px;
+  height: auto;
+  background: url(../../images/likeFilled.svg) center no-repeat;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: 250ms all ease;
+}
+.card__like-button_liked:hover {
+  transform: scale(1.1);
 }

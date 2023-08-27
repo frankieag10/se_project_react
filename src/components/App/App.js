@@ -233,6 +233,24 @@ function App() {
     setActiveModal("register");
   };
 
+  const handleLikeClick = ({ id, isLiked }) => {
+    isLiked
+      ? api
+
+          .addItemLike(id, token)
+          .then((updatedCard) => {
+            setClothingItems((cards) => cards.map((c) => (c._id === id ? updatedCard : c)));
+          })
+          .catch((err) => console.log(err))
+      : api
+
+          .removeItemLike(id, token)
+          .then((updatedCard) => {
+            setClothingItems((cards) => cards.map((c) => (c._id === id ? updatedCard : c)));
+          })
+          .catch((err) => console.log(err));
+  };
+
   useEscape(handleCloseModal);
 
   return (
@@ -253,6 +271,7 @@ function App() {
             >
               <Main
                 isLoggedIn={isLoggedIn}
+                onCardLike={handleLikeClick}
                 onSelectCard={handleSelectedCard}
                 cards={clothingItems}
                 weatherTemp={temp}
@@ -271,6 +290,7 @@ function App() {
                 handleOpenModal={handleOpenModal}
                 handleOpenChangeModal={handleOpenChangeModal}
                 onUpdateUser={onUpdateUser}
+                onCardLike={handleLikeClick}
                 onLogoutUser={onLogoutUser}
               />
             </ProtectedRoute>

@@ -2,10 +2,8 @@ import React from "react";
 import "./SideBar.css";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
-function SideBar({ handleOpenEditModal }) {
+function SideBar({ handleOpenEditModal, onLogoutUser }) {
   const userData = React.useContext(CurrentUserContext);
-
-  const firstLetter = userData?.name ? userData.name.charAt(0).toUpperCase() : "";
 
   return (
     <div className="sidebar">
@@ -17,8 +15,9 @@ function SideBar({ handleOpenEditModal }) {
             alt="avatar"
           />
         ) : (
-          <div className="header__avatar-placeholder">{firstLetter}</div>
+          <div className="header__avatar-placeholder">{userData?.name?.charAt().toUpperCase() || ""}</div>
         )}
+
         <p className="sidebar__user-title">{userData.name}</p>
       </div>
       <button
@@ -27,7 +26,12 @@ function SideBar({ handleOpenEditModal }) {
       >
         Change profile data
       </button>
-      <button className="sidebar__logout">Log out</button>
+      <button
+        className="sidebar__logout"
+        onClick={onLogoutUser}
+      >
+        Log out
+      </button>
     </div>
   );
 }

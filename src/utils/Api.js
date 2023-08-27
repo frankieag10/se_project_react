@@ -34,6 +34,26 @@ const removeItem = (id, token) => {
   });
 };
 
+const addItemLike = (id, token) => {
+  return request(`${baseUrl}/items/${id}/likes`, {
+    method: "PUT",
+    headers: {
+      "content-Type": "application/json",
+      authorization: `Bearer ${localStorage.getItem("jwt")}`,
+    },
+  });
+};
+
+const removeItemLike = (id, token) => {
+  return request(`${baseUrl}/items/${id}/likes`, {
+    method: "DELETE",
+    headers: {
+      "content-Type": "application/json",
+      authorization: `Bearer ${localStorage.getItem("jwt")}`,
+    },
+  });
+};
+
 const getItemList = () => {
   return request(`${baseUrl}/items`, {
     headers: {
@@ -42,6 +62,6 @@ const getItemList = () => {
   });
 };
 
-const api = { addItem, removeItem, getItemList };
+const api = { addItem, removeItem, getItemList, addItemLike, removeItemLike };
 
 export default api;

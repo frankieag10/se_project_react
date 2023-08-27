@@ -4,11 +4,11 @@ import "../Main/Main.css";
 import WeatherCard from "../WeatherCard/WeatherCard";
 import ItemCard from "../ItemCard/ItemCard";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
+
 function Main({ onSelectCard, onCardLike, weatherTemp, cardBackground, dayType, cards, isLoggedIn }) {
   const { currentTemperatureUnit } = React.useContext(CurrentTemperatureUnitContext);
   const temp = weatherTemp?.temprature?.[currentTemperatureUnit] || 999;
-  const currentTemp = weatherTemp?.weather?.temperature?.[currentTemperatureUnit];
-
+  const currenTemp = weatherTemp?.weather?.temperature?.[currentTemperatureUnit];
   const getWeatherType = () => {
     if (temp >= 86) {
       return "hot";
@@ -18,11 +18,12 @@ function Main({ onSelectCard, onCardLike, weatherTemp, cardBackground, dayType, 
       return "cold";
     }
   };
-
   const weatherType = getWeatherType();
 
-  console.log("cards not found", cards);
-
+  /*const filteredCards = cards.filter((card) => {
+    return card.weather.toLowerCase() === weatherType;
+  });
+*/
   const filteredCards = cards.filter((card) => {
     return card.weather && card.weather.toLowerCase() === weatherType;
   });
@@ -44,7 +45,7 @@ function Main({ onSelectCard, onCardLike, weatherTemp, cardBackground, dayType, 
         id="items-section"
       >
         <span className="weather__suggest">
-          Today is {currentTemp}
+          Today is {currenTemp}
           {currentTemperatureUnit === "F" ? "°F" : "°C"} / You may want to wear:
         </span>
         <div className="card-container">
@@ -55,8 +56,7 @@ function Main({ onSelectCard, onCardLike, weatherTemp, cardBackground, dayType, 
                 onLikeClick={onCardLike}
                 card={item}
                 onSelectCard={onSelectCard}
-                //key={item._id}
-                key={item?._id || item?.id}
+                key={item._id}
               />
             );
           })}

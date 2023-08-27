@@ -30,7 +30,7 @@ const updateUser = ({ name, avatar }, token) => {
     method: "PATCH",
     headers: {
       "content-Type": "application/json",
-      authorization: `Bearer ${token}`,
+      authorization: `Bearer ${localStorage.getItem("jwt")}`,
     },
     body: JSON.stringify({ name, avatar }),
   });
