@@ -2,7 +2,7 @@ import React from "react";
 import "./SideBar.css";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
-function SideBar({ handleOpenEditModal, onLogoutUser }) {
+function SideBar({ handleOpenChangeModal, onLogoutUser }) {
   const userData = React.useContext(CurrentUserContext);
 
   return (
@@ -22,7 +22,7 @@ function SideBar({ handleOpenEditModal, onLogoutUser }) {
       </div>
       <button
         className="sidebar__edit-info"
-        onClick={handleOpenEditModal}
+        onClick={handleOpenChangeModal}
       >
         Change profile data
       </button>

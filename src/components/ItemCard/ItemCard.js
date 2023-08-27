@@ -5,7 +5,8 @@ import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 function ItemCard({ onSelectCard, card, onLikeClick, isLoggedIn }) {
   const currentUser = useContext(CurrentUserContext);
   const checkLikeStatus = () => {
-    card.likes.some((user) => user._id === currentUser._id);
+    console.log(card.likes, currentUser._id);
+    return card.likes.some((userID) => userID === currentUser._id);
   };
   const [isLiked, setIsLiked] = useState(checkLikeStatus);
 
@@ -13,7 +14,6 @@ function ItemCard({ onSelectCard, card, onLikeClick, isLoggedIn }) {
     setIsLiked(!isLiked);
     onLikeClick({ id: card._id, isLiked: !isLiked, user: currentUser });
   };
-
   return (
     <div className="card">
       <div className="card__header">
@@ -30,7 +30,7 @@ function ItemCard({ onSelectCard, card, onLikeClick, isLoggedIn }) {
       <img
         src={card.imageUrl}
         className="card__image"
-        alt="image item"
+        alt={card.name}
         onClick={() => onSelectCard(card)}
       />
     </div>

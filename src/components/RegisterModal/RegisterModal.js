@@ -5,13 +5,7 @@ import { useEscape } from "../../hooks/useEscape";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useForm } from "../../hooks/useForm";
 
-function RegisterModal({
-  onRegisterUser,
-  handleCloseModal,
-  isOpen = { isOpen },
-  buttonText,
-  handleOpenLoginModal,
-}) {
+function RegisterModal({ onRegisterUser, handleCloseModal, isOpen = { isOpen }, buttonText, handleOpenLoginModal }) {
   const { values, handleChange, setValues } = useForm({});
 
   const handleOnSubmit = (evt) => {
@@ -35,6 +29,7 @@ function RegisterModal({
           Email
         </label>
         <input
+          value={values.email}
           type="email"
           id="email"
           className="form__input"
@@ -52,6 +47,7 @@ function RegisterModal({
           Password
         </label>
         <input
+          value={values.password}
           id="password"
           type="password"
           className="form__input"
@@ -67,6 +63,7 @@ function RegisterModal({
           Name
         </label>
         <input
+          value={values.name}
           type="text"
           id="name"
           className="form__input"
@@ -84,6 +81,7 @@ function RegisterModal({
           Avtar URL
         </label>
         <input
+          value={values.avatar}
           id="avatar"
           type="url"
           className="form__input"

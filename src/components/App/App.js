@@ -207,10 +207,6 @@ function App() {
     setActiveModal("");
   };
 
-  const handleLogin = () => {
-    setIsLoggedIn(true);
-  };
-
   const handleSelectedCard = (card) => {
     setActiveModal("preview");
     setSelectedCard(card);

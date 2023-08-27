@@ -5,13 +5,7 @@ import { useEscape } from "../../hooks/useEscape";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useForm } from "../../hooks/useForm";
 
-function LoginModal({
-  onSignInUser,
-  handleCloseModal,
-  isOpen = { isOpen },
-  buttonText,
-  handleOpenSignupModal,
-}) {
+function LoginModal({ onSignInUser, handleCloseModal, isOpen = { isOpen }, buttonText, handleOpenSignupModal }) {
   const { values, handleChange, setValues } = useForm({});
 
   const handleOnSubmit = (evt) => {
@@ -36,6 +30,7 @@ function LoginModal({
           Email
         </label>
         <input
+          value={values.email}
           type="email"
           id="email"
           className="form__input"
@@ -52,6 +47,7 @@ function LoginModal({
           Password
         </label>
         <input
+          value={values.password}
           id="password"
           type="password"
           className="form__input"

@@ -10,10 +10,10 @@ function ChangeProfileModal({ handleCloseModal, isOpen = { isOpen }, buttonText,
   const { values, handleChange, setValues } = useForm({});
 
   React.useEffect(() => {
-    if (!values.name && userData?.name) {
+    if (!values.name && !values.name && userData?.name) {
       setValues(userData);
     }
-  }, [values.name, userData, setValues]);
+  }, [values, userData, setValues]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -45,7 +45,7 @@ function ChangeProfileModal({ handleCloseModal, isOpen = { isOpen }, buttonText,
           minLength={1}
           maxLength={30}
           onChange={handleChange}
-          value={values.name}
+          value={values?.name || ""}
         />
         <label
           htmlFor="url"
@@ -60,7 +60,7 @@ function ChangeProfileModal({ handleCloseModal, isOpen = { isOpen }, buttonText,
           placeholder="Avatar URL"
           name="avatar"
           onChange={handleChange}
-          value={values.avatar}
+          value={values?.avatar || ""}
         />
       </fieldset>
     </ModalWithForm>

@@ -2,15 +2,7 @@ import React from "react";
 import "./Profile.css";
 import SideBar from "../SideBar/SideBar";
 import ClothesSection from "../ClothesSection/ClothesSection";
-function Profile({
-  cards,
-  onSelectCard,
-  onCardLike,
-  onLogoutUser,
-  handleOpenModal,
-  handleOpenEditModal,
-  isLoggedIn,
-}) {
+function Profile({ cards, onSelectCard, onCardLike, onLogoutUser, handleOpenModal, handleOpenEditModal, isLoggedIn }) {
   return (
     <div className="profile">
       <SideBar
