@@ -1,3 +1,13 @@
+# WTWR (What to Wear?)
+
+## About the project
+
+The idea of the application is pretty simple - we make a call to an API, which then responds with the daily weather forecast. We collect the weather data, process it, and then based on the forecast, we recommend suitable clothing to the user.
+
+## backend
+
+https://github.com/frankieag10/se_project_express.git
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
