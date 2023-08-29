@@ -73,16 +73,10 @@ function App() {
 
   function getItemList() {
     function makeRequest() {
-      return api
-        .getItemList()
-        .then((data) => {
-          setClothingItems(data);
-        })
-        .catch((err) => {
-          console.error(err);
-        });
+      return api.getItemList().then((data) => {
+        setClothingItems(data);
+      });
     }
-
     handleSubmit(makeRequest);
   }
 
@@ -99,7 +93,6 @@ function App() {
       return api.addItem(item, token).then((newItem) => {
         console.log(newItem);
         setClothingItems([newItem, ...clothingItems]);
-        handleCloseModal();
       });
     }
     handleSubmit(makeRequest);
@@ -120,7 +113,6 @@ function App() {
       return auth.signupUser({ name, avatar, email, password }).then((user) => {
         console.log(user);
         history.push("/signin");
-        handleCloseModal();
       });
     }
     handleSubmit(makeRequest);
@@ -152,7 +144,6 @@ function App() {
           localStorage.setItem("jwt", data.token);
           handleTokenCheck(data.token);
           history.push("/profile");
-          handleCloseModal();
         }
       });
     }
@@ -165,16 +156,10 @@ function App() {
 
   function onUpdateUser({ name, avatar }) {
     function makeRequest() {
-      return auth
-        .updateUser({ name, avatar }, token)
-        .then((res) => {
-          setCurrentUser(res);
-          console.log(res);
-          handleCloseModal();
-        })
-        .finally(() => {
-          setIsLoading(false);
-        });
+      return auth.updateUser({ name, avatar }, token).then((res) => {
+        setCurrentUser(res);
+        console.log(res);
+      });
     }
     handleSubmit(makeRequest);
   }

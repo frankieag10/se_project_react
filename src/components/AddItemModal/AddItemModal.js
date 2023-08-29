@@ -4,12 +4,18 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useForm } from "../../hooks/useForm";
 
 function AddItemModal({ onAddItem, handleCloseModal, isOpen = false, buttonText }) {
-  const { values, handleChange } = useForm({});
+  const { values, handleChange, setValues } = useForm({});
 
   const handleSubmit = (e) => {
     e.preventDefault();
     onAddItem(values);
   };
+
+  React.useEffect(() => {
+    if (isOpen) {
+      setValues({});
+    }
+  }, [isOpen]);
 
   return (
     <ModalWithForm
@@ -35,7 +41,7 @@ function AddItemModal({ onAddItem, handleCloseModal, isOpen = false, buttonText 
           name="name"
           minLength={1}
           maxLength={30}
-          value={values.name}
+          value={values.name || ""}
           onChange={handleChange}
         />
         <label
@@ -50,7 +56,7 @@ function AddItemModal({ onAddItem, handleCloseModal, isOpen = false, buttonText 
           className="form__input"
           placeholder="Image URL"
           name="imageUrl"
-          value={values.imageUrl}
+          value={values.imageUrl || ""}
           onChange={handleChange}
         />
       </fieldset>
