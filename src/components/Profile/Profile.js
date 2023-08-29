@@ -2,11 +2,11 @@ import React from "react";
 import "./Profile.css";
 import SideBar from "../SideBar/SideBar";
 import ClothesSection from "../ClothesSection/ClothesSection";
-function Profile({ cards, onSelectCard, onCardLike, onLogoutUser, handleOpenModal, handleOpenEditModal, isLoggedIn }) {
+function Profile({ cards, onSelectCard, onCardLike, onLogoutUser, handleOpenModal, handleOpenChangeModal, isLoggedIn }) {
   return (
     <div className="profile">
       <SideBar
-        handleOpenEditModal={handleOpenEditModal}
+        handleOpenChangeModal={handleOpenChangeModal}
         onLogoutUser={onLogoutUser}
       />
       <ClothesSection

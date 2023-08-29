@@ -1,16 +1,15 @@
 import React from "react";
-import { useState, useEffect, useContext } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useForm } from "../../hooks/useForm";
 import "../ChangeProfileModal/ChangeProfileModal.css";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 function ChangeProfileModal({ handleCloseModal, isOpen = { isOpen }, buttonText, onUpdateUser }) {
-  const userData = React.useContext(CurrentUserContext);
   const { values, handleChange, setValues } = useForm({});
+  const userData = React.useContext(CurrentUserContext);
 
   React.useEffect(() => {
-    if (!values.name && !values.name && userData?.name) {
+    if (values && !values.name && userData?.name) {
       setValues(userData);
     }
   }, [values, userData, setValues]);

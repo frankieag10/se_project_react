@@ -109,7 +109,6 @@ function App() {
     function makeRequest() {
       return api.removeItem(item._id, token).then(() => {
         setClothingItems((cards) => cards.filter((card) => card._id !== item._id));
-        handleCloseModal();
       });
     }
 
@@ -213,8 +212,8 @@ function App() {
   };
 
   const openConfirmationModal = () => {
-    setActiveModal("confirm delete modal opened");
-    setShowConfirmationModal("confirm");
+    console.log("confirm delete modal opened");
+    setActiveModal("confirm");
   };
 
   const handleOpenLoginModal = () => {

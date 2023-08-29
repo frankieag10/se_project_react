@@ -1,5 +1,5 @@
 import React from "react";
-import "./SideBar.css";
+import "../SideBar/SideBar.css";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 function SideBar({ handleOpenChangeModal, onLogoutUser }) {

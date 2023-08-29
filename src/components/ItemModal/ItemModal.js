@@ -3,11 +3,9 @@ import "./ItemModal.css";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 function ItemModal({ onClose, selectedCard, onDeleteItem }) {
   const currentUser = React.useContext(CurrentUserContext);
-  const isOwn = selectedCard.owner === currentUser.id;
+  const isOwn = selectedCard.owner === currentUser._id;
   console.log(selectedCard.owner);
-  const itemDeleteButtonClassName = `modal__delete-button ${
-    isOwn ? "modal__delete-button_visible" : "modal__delete-button_hidden"
-  }`;
+  const itemDeleteButtonClassName = `modal__delete-button ${isOwn ? "modal__delete-button_visible" : "modal__delete-button_hidden"}`;
 
   return (
     <div className={`modal modal__type_image`}>
@@ -21,7 +19,7 @@ function ItemModal({ onClose, selectedCard, onDeleteItem }) {
           <img
             src={selectedCard.imageUrl}
             className="modal__image"
-            alt={`Item: ${selectedCard.name}`}
+            alt={selectedCard.name}
           />
         </div>
         <div className="modal__footer">
