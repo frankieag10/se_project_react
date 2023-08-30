@@ -6,7 +6,10 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useForm } from "../../hooks/useForm";
 
 function LoginModal({ onSignInUser, handleCloseModal, isOpen = { isOpen }, buttonText, handleOpenSignupModal }) {
-  const { values, handleChange, setValues } = useForm({});
+  const { values, handleChange, setValues } = useForm({
+    email: "",
+    password: "",
+  });
 
   const handleOnSubmit = (evt) => {
     evt.preventDefault();
