@@ -290,6 +290,7 @@ function App() {
             onClose={handleCloseModal}
             selectedCard={selectedCard}
             onDeleteItem={openConfirmationModal}
+            isLoggedIn={isLoggedIn}
           >
             {" "}
           </ItemModal>
