@@ -5,7 +5,10 @@ import "../ChangeProfileModal/ChangeProfileModal.css";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 function ChangeProfileModal({ handleCloseModal, isOpen = { isOpen }, buttonText, onUpdateUser }) {
-  const { values, handleChange, setValues } = useForm({});
+  const { values, handleChange, setValues } = useForm({
+    name: "",
+    avatar: "",
+  });
   const userData = React.useContext(CurrentUserContext);
 
   React.useEffect(() => {

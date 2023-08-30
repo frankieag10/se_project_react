@@ -6,11 +6,16 @@ function ItemCard({ onSelectCard, card, onLikeClick, isLoggedIn }) {
   const currentUser = useContext(CurrentUserContext);
   const [isLiked, setIsLiked] = useState(card.likes.includes(currentUser._id));
 
-  const handleLikeClick = () => {
+  const handleLikeClick = async () => {
     const newLikeStatus = !isLiked;
-    setIsLiked(newLikeStatus);
 
-    onLikeClick({ id: card._id, isLiked: newLikeStatus, user: currentUser });
+    try {
+      await onLikeClick({ id: card._id, isLiked: newLikeStatus, user: currentUser });
+
+      setIsLiked(newLikeStatus);
+    } catch (error) {
+      console.error("Error toggling like:", error);
+    }
   };
 
   return (
