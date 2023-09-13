@@ -35,6 +35,7 @@ function App() {
   const history = useHistory();
   const [currentUser, setCurrentUser] = React.useState({});
   const [token, setToken] = React.useState(localStorage.getItem("jwt"));
+  //const errorHandler = require('./middlewares/error-handler');
 
   React.useEffect(() => {
     getWeatherForecast()
