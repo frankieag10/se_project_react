@@ -1,5 +1,7 @@
 import { handleServerResponse, request } from "../utils/Api";
-const baseUrl = "http://localhost:3001";
+//const baseUrl = "http://localhost:3001";
+
+const baseUrl = process.env.NODE_ENV === "production" ? "deployed-backend-url" : "http://localhost:3001";
 
 const signupUser = ({ name, avatar, email, password }) => {
   return request(`${baseUrl}/signup`, {
