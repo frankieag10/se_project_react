@@ -81,11 +81,21 @@ function App() {
     handleSubmit(makeRequest);
   }
 
-  function handleSubmit(request) {
+  /*function handleSubmit(request) {
     setIsLoading(true);
     request()
       .then(handleCloseModal)
       .catch(console.error)
+      .finally(() => setIsLoading(false));
+  }*/
+
+  function handleSubmit(request) {
+    setIsLoading(true);
+    request()
+      .then(handleCloseModal)
+      .catch((error) => {
+        console.error(error);
+      })
       .finally(() => setIsLoading(false));
   }
 
