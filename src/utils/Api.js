@@ -1,6 +1,3 @@
-//const baseUrl = "https://my-json-server.typicode.com/frankieag10/se_project_react";
-//const baseUrl = "http://localhost:3001";
-//newbaseurl
 const baseUrl = process.env.NODE_ENV === "production" ? "https://api.frankieswtwr.crabdance.com/" : "http://localhost:3001";
 
 export const handleServerResponse = (res) => {
