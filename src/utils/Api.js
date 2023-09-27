@@ -9,7 +9,7 @@ export function request(url, options) {
 }
 
 const addItem = ({ name, imageUrl, weather }, token) => {
-  return request(`${baseUrl}/items`, {
+  return request(`${baseUrl}items`, {
     method: "POST",
     headers: {
       "content-Type": "application/json",
@@ -24,7 +24,7 @@ const addItem = ({ name, imageUrl, weather }, token) => {
 };
 
 const removeItem = (id, token) => {
-  return request(`${baseUrl}/items/${id}`, {
+  return request(`${baseUrl}items/${id}`, {
     method: "DELETE",
     headers: {
       "content-Type": "application/json",
@@ -34,7 +34,7 @@ const removeItem = (id, token) => {
 };
 
 const addItemLike = (id, token) => {
-  return request(`${baseUrl}/items/${id}/likes`, {
+  return request(`${baseUrl}items/${id}/likes`, {
     method: "PUT",
     headers: {
       "content-Type": "application/json",
@@ -44,7 +44,7 @@ const addItemLike = (id, token) => {
 };
 
 const removeItemLike = (id, token) => {
-  return request(`${baseUrl}/items/${id}/likes`, {
+  return request(`${baseUrl}items/${id}/likes`, {
     method: "DELETE",
     headers: {
       "content-Type": "application/json",
@@ -54,7 +54,7 @@ const removeItemLike = (id, token) => {
 };
 
 const getItemList = () => {
-  return request(`${baseUrl}/items`, {
+  return request(`${baseUrl}items`, {
     headers: {
       "content-Type": "application/json",
     },
