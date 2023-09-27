@@ -9,7 +9,7 @@ export function request(url, options) {
 }
 
 const addItem = ({ name, imageUrl, weather }, token) => {
-  return request(`${baseUrl}items/`, {
+  return request(`${baseUrl}items`, {
     method: "POST",
     headers: {
       "content-Type": "application/json",
@@ -54,7 +54,7 @@ const removeItemLike = (id, token) => {
 };
 
 const getItemList = () => {
-  return request(`${baseUrl}items/`, {
+  return request(`${baseUrl}items`, {
     headers: {
       "content-Type": "application/json",
     },
