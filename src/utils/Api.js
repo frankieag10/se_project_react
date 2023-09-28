@@ -27,7 +27,7 @@ const addItem = ({ name, imageUrl, weather }, token) => {
 
 const removeItem = (id, token) => {
   console.log(`Removing item with ID: ${id}`);
-  return request(`${baseUrl}/items/${id}/`, {
+  return request(`${baseUrl}/items/${id}`, {
     method: "DELETE",
     headers: {
       "content-Type": "application/json",
