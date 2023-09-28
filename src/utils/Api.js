@@ -5,7 +5,7 @@ export const handleServerResponse = (res) => {
 };
 
 export function request(url, options) {
-  console.log(`Sending request to: ${url}`); // Log the URL being requested
+  console.log(`Sending request to: ${url}`);
   return fetch(url, options).then(handleServerResponse);
 }
 
