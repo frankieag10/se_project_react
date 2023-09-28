@@ -5,10 +5,12 @@ export const handleServerResponse = (res) => {
 };
 
 export function request(url, options) {
+  console.log(`Sending request to: ${url}`); // Log the URL being requested
   return fetch(url, options).then(handleServerResponse);
 }
 
 const addItem = ({ name, imageUrl, weather }, token) => {
+  console.log("Adding a new item...");
   return request(`${baseUrl}/items`, {
     method: "POST",
     headers: {
@@ -24,6 +26,7 @@ const addItem = ({ name, imageUrl, weather }, token) => {
 };
 
 const removeItem = (id, token) => {
+  console.log(`Removing item with ID: ${id}`);
   return request(`${baseUrl}/items/${id}/`, {
     method: "DELETE",
     headers: {
@@ -34,6 +37,7 @@ const removeItem = (id, token) => {
 };
 
 const addItemLike = (id, token) => {
+  console.log(`Adding a like to item with ID: ${id}`);
   return request(`${baseUrl}/items/${id}/likes`, {
     method: "PUT",
     headers: {
@@ -44,6 +48,7 @@ const addItemLike = (id, token) => {
 };
 
 const removeItemLike = (id, token) => {
+  console.log(`Removing like from item with ID: ${id}`);
   return request(`${baseUrl}/items/${id}/likes`, {
     method: "DELETE",
     headers: {
@@ -54,6 +59,7 @@ const removeItemLike = (id, token) => {
 };
 
 const getItemList = () => {
+  console.log("Fetching item list...");
   return request(`${baseUrl}/items`, {
     headers: {
       "content-Type": "application/json",

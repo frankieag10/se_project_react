@@ -1,9 +1,9 @@
 import { handleServerResponse, request } from "../utils/Api";
-//const baseUrl = "http://localhost:3001";
 
-const baseUrl = process.env.NODE_ENV === "production" ? "https://api.frankieswtwr.crabdance.com/" : "http://localhost:3001";
+const baseUrl = process.env.NODE_ENV === "production" ? "https://api.frankieswtwr.crabdance.com" : "http://localhost:3001";
 
 const signupUser = ({ name, avatar, email, password }) => {
+  console.log("Signing up user...");
   return request(`${baseUrl}/signup`, {
     method: "POST",
     headers: {
@@ -14,6 +14,7 @@ const signupUser = ({ name, avatar, email, password }) => {
 };
 
 const signinUser = ({ email, password }) => {
+  console.log("Signing in user...");
   return request(`${baseUrl}/signin`, {
     method: "POST",
     headers: {
@@ -24,6 +25,7 @@ const signinUser = ({ email, password }) => {
 };
 
 const updateUser = ({ name, avatar }, token) => {
+  console.log("Updating user profile...");
   return request(`${baseUrl}/users/me`, {
     method: "PATCH",
     headers: {
@@ -35,6 +37,7 @@ const updateUser = ({ name, avatar }, token) => {
 };
 
 const checkToken = (token) => {
+  console.log("Checking user token...");
   return request(`${baseUrl}/users/me`, {
     method: "GET",
     headers: {
