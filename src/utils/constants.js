@@ -16,7 +16,7 @@ import nightStorm from "../images/weather_conditions/night-storm.svg";
 import nightClear from "../images/weather_conditions/night-moon.svg";
 import nightMist from "../images/weather_conditions/night-mist.svg";
 
-const defaultClothingItems = [
+/*const defaultClothingItems = [
   {
     _id: 0,
     name: "Cap",
@@ -54,6 +54,7 @@ const defaultClothingItems = [
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Coat.png?etag=298717ed89d5e40b1954a1831ae0bdd4",
   },
 ];
+*/
 
 const weatherOptions = [
   {
@@ -139,4 +140,4 @@ const weatherOptions = [
     day: false,
   },
 ];
-export { defaultClothingItems, weatherOptions };
+export { weatherOptions };
